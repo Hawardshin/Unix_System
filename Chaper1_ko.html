@@ -1,0 +1,241 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset ="utf-8">
+    <title> UNIX Chapter1</title>
+    <style type="text/css">
+      .tg  {border-collapse:collapse;border-spacing:0;}
+      .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+        overflow:hidden;padding:10px 5px;word-break:normal;}
+      .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+        font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+      .tg .tg-cly1{text-align:left;vertical-align:middle}
+      .tg .tg-0lax{text-align:left;vertical-align:top}
+      </style>
+  </head>
+  <body>
+    <h1>UNIX 1강</h1>
+      <h2>유닉스 개요</h2>
+      <div>
+        <h3>유닉스의 역사</h3>
+        <ul>
+          <li>1969. AT&T 벨 연구소에서 개발 (개발자 : 켄 톰슨, 데니스 리치)</li>
+          <li>현재 UNIX는 “The Open Group”의 등록 상표이므로, 각 제조사는 각자 제품명을 붙여 사용</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Linux란?</h3>
+        <ul>
+          <li>유닉스와 호환 가능한 유닉스 계열 운영체제</li>
+          <li>개발 초기부터 공개 S/W</li>
+          <li> 1991. 리누스 토발즈가 개발</li>
+          <li>현재 토발즈가 리눅스 커널의 개발을 중재</li>
+        </ul>
+      </div>
+      <div>
+        <h3>유닉스의 특징</h3>
+        <ul>
+          <li>대화형 시스템</li>
+          <li>다중 사용자 시스템 / 다중 작업 시스템</li>
+          <li>높은 이식성과 확장성</li>
+          <li>계층적 트리 파일 시스템</li>
+          <li>다양한 부가 기능 제공</li>
+        </ul>
+      </div>
+      <div>
+        <h3>유닉스의 구조</h3>
+        <ol>
+          <li>커널</li>
+          <ul>
+            <li>운영체제의 핵심</li>
+            <li>컴퓨터 자원 관리(프로세스, 메모리, 파일시스템, 장치)</li>
+          </ul>
+          <li>셸</li>
+          <ul>
+            <li>사용자 인터페이스 제공</li>
+            <li>사용자의 명령을 입력 받아 처리 한 후 결과를 출력</li>
+          </ul>
+          <li>유틸리티</li>
+          <ul>
+            <li><strong>유닉스 시스템</strong>이란 유닉스가 동작하고 있는 컴퓨터를 의미한다.</li>
+            <li>유닉스 시스템에 접속하기 위해 필요한 것 : 단말기, 사용자 계정</li>
+            <li>단말기 : Putty, 하이퍼 터미널, 텔넷, SSH(텔넷의 보안문제 해결)</li>
+            <li>사용자 계정 : 사용자 ID, 비밀번호지정(시스템 관리자에게 요청하여 등록가능)</li>
+          </ul>
+        </ol>
+      </div>
+      <div>
+        <h2>로그인 하기 실습</h2>
+        <h3>로그인 하기</h3>
+        <ul>
+          <li>시스템 사용을 허가 받고 자원을 할당 받는 과정</li>
+          <li>ID와 비밀번호 입력</li>
+        </ul>
+        <h3>[실습 1-1] ssh를 이용해 유닉스에 접속하기</h3>
+        <ol>
+          <li>cmd 열기</li>
+          <li>사용자 계정의 ID @ 서버의 IP 주소 입력</li>
+          <li>ssh인증키 생성</li>
+          <li>유닉스 시스템 로그인</li>
+        </ol>
+        <h3>집에서 연결이 안되는 이유 </h3>
+        <ul>
+          <li>인터넷 주소는 public ip(공인 ip) 와 private ip(사설 ip)가 있는데 우리의 10.10.54.75 주소는 사설 IP이기 때문이다. (사설 IP는 주소 중복이 가능)</li>
+          <li>사설 IP에대한 정리는 <a href="https://haward.tistory.com/112">제 블로그</a>에 해두었습니다. </li>
+        </ul>
+        <h3>telnet이 안된다면</h3>
+        <ul>
+          <li>제어팟/모든제어판 항목/프로그램 및 기능/window 기능 켜기/끄기→ 텔넷 클라이언트를 체크해주면 된다.</li>
+          <li><a href="https://kencenerelli.wordpress.com/2017/07/16/enabling-telnet-client-in-windows-10/">문제 해결 링크</a></li>
+        </ul>
+      </div>
+      <div>
+        <h1>Command Line Operation</h1>
+        <div>
+          <h2>명령행 편집</h2>
+          <ul>
+            <li>문자 지우기 : 백스페이스</li>
+            <li>단어지우기 : Ctrl + W</li>
+            <li>문장 지우기 : Ctrl + U</li>
+            <li>잠깐 중단 : Ctrl +s</li>
+            <li>다시 시작 : Ctrl + q</li>
+          </ul>
+        </div>
+        <div>
+          <h2>명령의 구조</h2>
+          명령 [옵션] [인자]
+          <ul>
+            <li>명령 : 유닉스에 작업을 지시하는 프로그램 이름으로 쉘 빌트인 명령과 유틸리티로 구분된다.</li>
+            <li>옵션 : 명령의 세부기능을 선택한다. 보통 “-”로 시작하고 숫자, 대문자, 소문자를 사용한다.</li>
+            <li>인자 : 명령으로 전달되는 값으로 보통 파일명이나 디렉토리 명이다.</li>
+            <li>유닉스 명령은 대소문자를 구분한다.</li>
+            <li>맨 앞에 있는 $의 의미는 프롬포트이다.</li>
+          </ul>
+        </div>
+        <div>
+          <h2>기초 명령</h2>
+          <ul>
+            <li> banner : 화면에 큰 문자를 출력 -사용법 : `banner [원하는 문자]`</li>
+            <li> date : 시간과 날짜를 출력</li>
+            <li> clear : 화면을 지움 (in ms window cls)</li>
+            <li> man : 명령어 설명 출력</li>
+            <li> passwd : 비밀번호 변경(8자리 이상 숫자나 특수문자 포함하여 지정) (관리자도 리셋만 가능)
+            <li> logout, Exit, Ctrl + D 명령 : 쉘을 종료, 로그아웃하는 명령어</li>
+            <li> ping 10.10.54.75 : 대상 ip를 가진 컴퓨터를 향해 일정 크기의 패킷을 보내고 대상 컴퓨터가 이에 응답을 보내는것을 수신해서 네트워크 동작 여부 및 상태를 파악하는 명령어 (`ping [google.co.kr](http://google.co.kr)` 도 가능)</li>
+            <li> ipconfig 명령 : DNS, IP Address,Subnet Mask, Gateway의 주소를 볼 수 있는 명령 (리눅스 계열에서는 ifconfig로 이름이 다르다)</li>
+            <li> telnet 10.10.54.75 : 10.10.54.75 ip 주소로 telnet연결이 된다.</li>
+            <li> df -l -k : 파티션 공간 나뉜 모습 확인 명령</li>
+          </ul>
+          <div>
+            <h3>who</h3>
+            who 명령어는 현재 접속한 사용자 정보를 ‘/var/run/utmp’ 파일에서 읽어온다. utmp 파일은 사용자가 원격으로 서버에 로그인할 때 사용자의 정보를 저장하고 사용자가 원격 호스트에서 로그아웃 할 때 저장되어 있는 정보를 제거한다.<br>
+            현재 서버에 접속해 있는 사용자의 로그인명, 터미널, 로그인 시간, 원격 호스트 또는 X디스플레이를 출력한다.
+          </div>
+          <div>
+            <h3>ls</h3>
+
+            <h4>옵션</h4>
+            <table class="tg">
+              <thead>
+                <tr>
+                  <th class="tg-0lax">옵션</th>
+                  <th class="tg-0lax">설명</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="tg-0lax">-i</td>
+                  <td class="tg-0lax">inode 번호 표시.</td>
+                </tr>
+                <tr>
+                  <td class="tg-0lax">-A, -a</td>
+                  <td class="tg-0lax">모든 항복을 보여준다(A는 .과 ..은 제외)</td>
+                </tr>
+                <tr>
+                  <td class="tg-cly1">-C</td>
+                  <td class="tg-cly1">(column)다중 열 형식의 수직 방식으로 출력을 분류 (ls 명령어의 default)</td>
+                </tr>
+                <tr>
+                  <td class="tg-cly1">-s</td>
+                  <td class="tg-cly1">size 각 항목의 크기를 킬로바이트 단위(간접 블록 포함)로 제공합니다.</td>
+                </tr>
+                <tr>
+                  <td class="tg-cly1">-F</td>
+                  <td class="tg-cly1">파일이 디렉토리인 경우 /(슬래시), 파일이 실행 가능한 경우 *(별표), 파일이 소켓인 경우 =(등호), 파일이 선입선출법(FIFO)인 경우 |(파이프), 기호 링크인 경우 @를 각 파일 이름의 뒤에 추가합니다</td>
+                </tr>
+                <tr>
+                  <td class="tg-cly1">-d</td>
+                  <td class="tg-cly1">이름 지정된 디렉토리에 대한 정보만 표시합니다. 디렉토리를 파일처럼 처리 하므로 -l 사용할 때 유용</td>
+                </tr>
+                <tr>
+                  <td class="tg-cly1">-R</td>
+                  <td class="tg-cly1">모든 서브디렉토리를 재귀적으로 나열합니다.</td>
+                </tr>
+                <tr>
+                  <td class="tg-cly1">-l</td>
+                  <td class="tg-cly1">모드, 링크 수, 소유자, 그룹, 크기(바이트), 최종 수정 시간을 표시</td>
+                </tr>
+                <tr>
+                  <td class="tg-cly1">-S</td>
+                  <td class="tg-cly1">파일 크기를 기본으로 내림차순으로 하고 파일 이름을 보조키로 정렬한다.</td>
+                </tr>
+              </tbody>
+              </table>
+          </div>
+          <div>
+            <h3>od 명령</h3>
+            <ul>
+              <li>지정된 형식으로 파일을 표시하는 명령.</li>
+              <li>매개 변수가 없을 땐 표준 입력을 받는다.</li>
+              <li>-t옵션으로 형식 유형을 지정하는데 형식 유형이 지정되지 않으면 -t o2가 기본값이다.(이진수 변환)</li>
+            </ul>
+            <h4>옵션</h4>
+            <table class="tg">
+            <thead>
+              <tr>
+                <th class="tg-lboi">옵션</th>
+                <th class="tg-lboi">설명</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="tg-lboi">-t</td>
+                <td class="tg-lboi">출력형식 지정 옵션</td>
+              </tr>
+              <tr>
+                <td class="tg-lboi">-x</td>
+                <td class="tg-lboi">16진수 표기 보기</td>
+              </tr>
+              <tr>
+                <td class="tg-lboi">-c</td>
+                <td class="tg-lboi">아스키 문자로 표시한다.(문자로 표기)</td>
+              </tr>
+            </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2>실습 및 수업시간에 한 내용</h2>
+        <div>
+          <h3>파이프를 이용해 메세지 보내기</h3>
+          <ol>
+            <li>who am i 명령 : 로그인 이름, 터미널 이름 및 로그인 시간을 표시</li>
+            <li>tty 명령 : 현재 터미널 이름을 볼 수 있다.</li>
+          </ol>
+          터미널의 이름을 확인 후 write 명령을 이용해 그곳에 메세지를 보낼 수 있다.<br>
+          <code>echo HI | write unix104 pts/20</code>
+          <h3>터미널에서 지우기 세팅 바꾸기</h3>
+          <p>터미널에서 지우기 세팅 바꾸기</p>
+            <pre>
+              <code>
+                tty # 내 터미널이 뭔지 보는 것
+                stty # 터미널 세팅을 보는것
+                stty -a
+                stty erase [딜리트 키] # erase를 delete키(^?)를 delete(^H)를 한다.
+              </code>
+            </pre>
+        </div>
+      </div>
+  </body>
+</html>

@@ -1,0 +1,244 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset ="utf-8">
+    <title> Unix Chaper 1 Summary</title>
+    <style type="text/css">
+      .tg  {border-collapse:collapse;border-spacing:0;}
+      .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+        overflow:hidden;padding:10px 5px;word-break:normal;}
+      .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+        font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+      .tg .tg-cly1{text-align:left;vertical-align:middle}
+      .tg .tg-0lax{text-align:left;vertical-align:top}
+      </style>
+  </head>
+  <body>
+    <h1>Unix Chaper 1 Summary Unix Overview and Basic Usage
+    </h1>
+    <section>
+      <h2>Overview of Unix</h2>
+      <div>
+        <h3>History of Unix</h3>
+        <ul>
+          <li>1969. Developed by AT&T Bell Labs (Developers: Ken Thompson, Dennis Ritchie)</li>
+          <li>Currently, UNIX is a registered trademark of "The Open Group", so each manufacturer uses its own product name
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3>Linux?</h3>
+        <ul>
+          <li>Unix-like operating systems compatible with Unix</li>
+          <li>Open S/W from the beginning of development</li>
+          <li> 1991. Developed by Linus Torvalds</li>
+          <li>Torvalds currently mediates the development of the Linux kernel</li>
+        </ul>
+      </div>
+      <div>
+        <h3>The Characteristics of Unix</h3>
+        <ul>
+          <li>an interactive system</li>
+          <li>Multi-user systems / multi-task systems</li>
+          <li>High portability and scalability</li>
+          <li>Hierarchical tree file system</li>
+          <li>Offers a variety of additional features</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Unix structure</h3>
+        <ol>
+          <li>Kernel</li>
+          <ul>
+            <li>The core of the operating system</li>
+            <li>Computer resource management (process, memory, file system, device)</li>
+          </ul>
+          <li>SHELL</li>
+          <ul>
+            <li>Provide a user interface</li>
+            <li>Receive the user's command, process it, and output the result</li>
+          </ul>
+          <li>Utility</li>
+          <ul>
+            <li><strong>Unix System</strong> refers to a computer running Unix.</li>
+            <li>What you need to access the Unix system: terminal, user account</li>
+            <li>Terminal: Putty, HyperTerminal, Telnet, SSH (Resolving Telnet Security Issues)</li>
+          </ul>
+        </ol>
+      </div>
+      <div>
+        <h2>Logging in Practice</h2>
+        <h3>Login</h3>
+        <ul>
+          <li>The process of obtaining permission to use the system and allocating resources</li>
+          <li>Enter ID and password</li>
+        </ul>
+        <h3>[Practice 1-1] Access Unix using ssh</h3>
+        <ol>
+          <li>Open cmd</li>
+          <li>ID of the user account @ Enter the IP address of the server</li>
+          <li>ssh authentication key generation</li>
+          <li>Log in to UNIX system</li>
+        </ol>
+        <h3>Why can't I connect at home</h3>
+        <ul>
+          <li>Internet addresses include public ip and private ip, because our 10.10.54.75 address is private IP.0.54.75 address is private IP. (Private IP addresses can be duplicated)</li>
+          <li>The private IP is summarized in <a href="https://haward.tistory.com/112 ">My blog</a>. </li>
+        </ul>
+        <h3>If telnet is not working</h3>
+        <ul>
+          <li>Check the control pod/all control panel items/programs and functions/window functions on/off → Telnet client.</li>
+          <li><a href="https://kencenerelli.wordpress.com/2017/07/16/enabling-telnet-client-in-windows-10/">Troubleshooting Links</a></li>
+        </ul>
+      </div>
+      <div>
+        <h1>Command Line Operation</h1>
+        <div>
+            <h2>Edit Command Line</h2>
+            <ul>
+                <li>Clear Character: Backspace</li>
+                <li>Erasing words: Ctrl + W</li>
+                <li>Erase sentence: Ctrl + U</li>
+                <li>Short break: Ctrl +s</li>
+                <li>Restart: Ctrl + q</li>
+            </ul>
+        </div>
+        <div>
+            <h2>Structure of commands</h2>
+            command [option] [factor]
+            <ul>
+                <li>Command: The program name that instructs Unix to work is divided into shell built-in commands and utilities.</li>
+                <li>Option: Select the detailed function of the command. It usually starts with "-" and uses numbers, uppercase letters, and lowercase letters.</li>
+                <li>factor: The value passed by the command, usually a file name or directory name.</li>
+                <li>Unix commands are case sensitive.</li>
+                <li>The first $ signifies prompot.</li>
+            </ul>
+        </div>
+        <div>
+            <h2>Basic command</h2>
+            <ul>
+                <li>banner: Print large characters on the screen - How to use: 'banner [wanted character]`</li>
+                <li>date: Output time and date</li>
+                <li>clear: Erase the screen (ins window cls)</li>
+                <li>man: Command description output</li>
+                <li>passwd: Change password (specify with 8 or more digits or special characters) (Administrators can only reset)
+                <li>logout, Exit, Ctrl + D command: command to exit and log out the shell</li>
+                <li>ping 10.10.54.75: A command that sends a packet of a certain size to a computer with a target ip and receives a response from the target computer to determine network operation and status ('ping [google.co.kr ] (http://google.co.kr )'.</li>
+                <li> ipconfig command: command to view addresses for DNS, IP Address, Subnet Mask, Gateway (in Linux family, it is named ifconfig)</li>
+                <li> telnet 10.10.54.75 : Telnet to 10.10.54.75 ip address.</li>
+                <li>df-l-k:check partition space split command</li>
+            </ul>
+            <div>
+                <h3>who</h3>
+                The who command reads the currently accessed user information from the '/var/run/utmp' file. The utmp file stores the user's information when the user logs into the server remotely and removes the stored information when the user logs out of the remote host.<br>
+                It outputs the login name, terminal, login time, remote host, or X display of the user currently connected to the server.
+            </div>
+            <div>
+                <h3>ls</h3>
+
+                <h4>Option</h4>
+                <table class="tg">
+                    <thead>
+                        <tr>
+                            <th class="tg-0lax">Option</th>
+                            <th class="tg-0lax">Discription</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="tg-0lax">-i</td>
+                            <td class="tg-0lax">display inode number.</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-0lax">-A, -a</td>
+                            <td class="tg-0lax">Shows all surrender (except for A and...)</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-cly1">-C</td>
+                            <td class="tg-cly1">(column)classifies output in a vertical manner in the form of multiple columns (default of ls command)</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-cly1">-s</td>
+                            <td class="tg-cly1">sizeProvides the size of each item in kilobytes (including indirect blocks).</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-cly1">-F</td>
+                            <td class="tg-cly1">Add /(slash) if the file is a directory, *(address) if the file is executable, = (equal) if the file is a socket, |(pipe) if the file is FIFO, and @ if the symbol link is the name of each file.</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-cly1">-d</td>
+                            <td class="tg-cly1">Displays information only about the named directory. Useful when using -l because directories are treated like files</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-cly1">-R</td>
+                            <td class="tg-cly1"> recursively lists all subdirectories.</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-cly1">-l</td>
+                            <td class="tg-cly1">Show mode, number of links, owner, group, size (bytes), and last modification time</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-cly1">-S</td>
+                            <td class="tg-cly1">Sorts file names with secondary keys in descending order based on file size.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <h3>od command</h3>
+                <ul>
+                    <li>Command to display files in the specified format.</li>
+                    <li>If there are no parameters, the standard input is received.</li>
+                    <li>If you specify a type of format with the -t option, but no type is specified, -to2 is the default (binary conversion)</li>
+                </ul>
+                <h4>Option</h4>
+                <table class="tg">
+                    <thead>
+                        <tr>
+                            <th class="tg-lboi">Option</th>
+                            <th class="tg-lboi">Discription</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="tg-lboi">-t</td>
+                            <td class="tg-lboi">output formatting options</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-lboi">-x</td>
+                            <td class="tg-lboi">View hexadecimal notation</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-lboi">-c</td>
+                            <td class="tg-lboi">Shown in ASCII characters.(Characterized)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+      </div>
+      <div>
+        <h2>Contents during practice and class</h2>
+          <div>
+            <h3>Sending a message through a pipe</h3>
+            <ol>
+                <li>who am i command: display login name, terminal name, and login time</li>
+                <li>ty command: You can view the current terminal name.</li>
+            </ol>
+            After checking the name of the terminal, you can send a message there using the write command.<br>
+            <code>echo HI | write unix104 pts/20</code>
+            <h3>Change erase settings at the terminal</h3>
+            <p>Change Clear Settings in Terminal</p>
+            <pre>
+              <code>
+                tty # seeing what my terminal is
+                Stty# Looking at terminal settings
+                stty -a
+                stty erase [delivery key] # erase delete key (^?) delete (^H).
+              </code>
+            </pre>
+          </div>
+      </div>
+    </section>
+  </body>
+</html>
