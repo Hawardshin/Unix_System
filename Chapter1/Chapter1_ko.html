@@ -3,15 +3,7 @@
   <head>
     <meta charset ="utf-8">
     <title> UNIX Chapter1</title>
-    <style type="text/css">
-      .tg  {border-collapse:collapse;border-spacing:0;}
-      .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-        overflow:hidden;padding:10px 5px;word-break:normal;}
-      .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-        font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-      .tg .tg-cly1{text-align:left;vertical-align:middle}
-      .tg .tg-0lax{text-align:left;vertical-align:top}
-      </style>
+
   </head>
   <body>
     <h1>UNIX 1강</h1>
@@ -131,88 +123,8 @@
             who 명령어는 현재 접속한 사용자 정보를 ‘/var/run/utmp’ 파일에서 읽어온다. utmp 파일은 사용자가 원격으로 서버에 로그인할 때 사용자의 정보를 저장하고 사용자가 원격 호스트에서 로그아웃 할 때 저장되어 있는 정보를 제거한다.<br>
             현재 서버에 접속해 있는 사용자의 로그인명, 터미널, 로그인 시간, 원격 호스트 또는 X디스플레이를 출력한다.
           </div>
-          <div>
-            <h3>ls</h3>
 
-            <h4>옵션</h4>
-            <table class="tg">
-              <thead>
-                <tr>
-                  <th class="tg-0lax">옵션</th>
-                  <th class="tg-0lax">설명</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="tg-0lax">-i</td>
-                  <td class="tg-0lax">inode 번호 표시.</td>
-                </tr>
-                <tr>
-                  <td class="tg-0lax">-A, -a</td>
-                  <td class="tg-0lax">모든 항복을 보여준다(A는 .과 ..은 제외)</td>
-                </tr>
-                <tr>
-                  <td class="tg-cly1">-C</td>
-                  <td class="tg-cly1">(column)다중 열 형식의 수직 방식으로 출력을 분류 (ls 명령어의 default)</td>
-                </tr>
-                <tr>
-                  <td class="tg-cly1">-s</td>
-                  <td class="tg-cly1">size 각 항목의 크기를 킬로바이트 단위(간접 블록 포함)로 제공합니다.</td>
-                </tr>
-                <tr>
-                  <td class="tg-cly1">-F</td>
-                  <td class="tg-cly1">파일이 디렉토리인 경우 /(슬래시), 파일이 실행 가능한 경우 *(별표), 파일이 소켓인 경우 =(등호), 파일이 선입선출법(FIFO)인 경우 |(파이프), 기호 링크인 경우 @를 각 파일 이름의 뒤에 추가합니다</td>
-                </tr>
-                <tr>
-                  <td class="tg-cly1">-d</td>
-                  <td class="tg-cly1">이름 지정된 디렉토리에 대한 정보만 표시합니다. 디렉토리를 파일처럼 처리 하므로 -l 사용할 때 유용</td>
-                </tr>
-                <tr>
-                  <td class="tg-cly1">-R</td>
-                  <td class="tg-cly1">모든 서브디렉토리를 재귀적으로 나열합니다.</td>
-                </tr>
-                <tr>
-                  <td class="tg-cly1">-l</td>
-                  <td class="tg-cly1">모드, 링크 수, 소유자, 그룹, 크기(바이트), 최종 수정 시간을 표시</td>
-                </tr>
-                <tr>
-                  <td class="tg-cly1">-S</td>
-                  <td class="tg-cly1">파일 크기를 기본으로 내림차순으로 하고 파일 이름을 보조키로 정렬한다.</td>
-                </tr>
-              </tbody>
-              </table>
-          </div>
-          <div>
-            <h3>od 명령</h3>
-            <ul>
-              <li>지정된 형식으로 파일을 표시하는 명령.</li>
-              <li>매개 변수가 없을 땐 표준 입력을 받는다.</li>
-              <li>-t옵션으로 형식 유형을 지정하는데 형식 유형이 지정되지 않으면 -t o2가 기본값이다.(이진수 변환)</li>
-            </ul>
-            <h4>옵션</h4>
-            <table class="tg">
-            <thead>
-              <tr>
-                <th class="tg-lboi">옵션</th>
-                <th class="tg-lboi">설명</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="tg-lboi">-t</td>
-                <td class="tg-lboi">출력형식 지정 옵션</td>
-              </tr>
-              <tr>
-                <td class="tg-lboi">-x</td>
-                <td class="tg-lboi">16진수 표기 보기</td>
-              </tr>
-              <tr>
-                <td class="tg-lboi">-c</td>
-                <td class="tg-lboi">아스키 문자로 표시한다.(문자로 표기)</td>
-              </tr>
-            </tbody>
-            </table>
-          </div>
+
         </div>
       </div>
       <div>

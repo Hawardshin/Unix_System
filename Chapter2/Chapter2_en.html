@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset ="utf-8">
+    <title> Unix Chaper 2 Summary</title>
+    <style type="text/css">
+      .tg  {border-collapse:collapse;border-spacing:0;}
+      .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+        overflow:hidden;padding:10px 5px;word-break:normal;}
+      .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+        font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+      .tg .tg-cly1{text-align:left;vertical-align:middle}
+      .tg .tg-0lax{text-align:left;vertical-align:top}
+      </style>
+  </head>
+  <body>
+    <h1>Chapter2 UNIX FileSystem</h1>
+    <div>
+      <h2>File</h2>
+      <ul>
+          <li>File is a collection of relevant information</li>
+          <li>Unix manages all information and devices in the system as a file.</li>
+          <li>File System: A collection of files and directories on a UNIX system that are hierarchically configured to effectively manage files within the system</li>
+      </ul>
+      <h3>1. General file</h3>
+      <ul>
+          <li>File intended to store data</li>
+          <li>Text file: File whose contents consist of ASCII code</li>
+          <li>You can view the contents using a text editor or cat or more commands.</li>
+          <li>Binary file: All files whose contents are not ASCII code</li>
+          <li>You must use the designated application to view the contents.</li>
+          <li>.profile: The file that is initially set. In other words, it is a file that is required for initialization and is hidden, so it can only be seen if you give the ls -a option.</li>
+      </ul>
+      <h3>2. Directory File</h3>
+      A special file that is the name of a file or subdirectory with different content
+      <h3>3. Symbolic link file</h3>
+      Special file text file pointing to the source file
+      <h3>4. Device file</h3>
+      <ul>
+          <li>Special files for managing devices</li>
+          <li>No data block to store data</li>
+          <li>Save two numbers to separate devices instead of file size</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Unix File System – Directory Hierarchy</h2>
+      -Home folder: ~<br>
+      -root folder: /<br>
+      <h3>Path</h3>
+      <ul>
+          <li>Location of certain files on the file system</li>
+          <li>absolute path: Show all paths up to a specific file based on the root directory (/)</li>
+          <li>Relative path: Based on the current location, the location can be displayed using... and...</li>
+      </ul>
+      <h3>File system name rule</h3>
+      <ul>
+          <li>Available: Alphabet (case sensitive), number, hyphen (-), underscore (_), dot (.)</li>
+          <li>Restraint from using: spaces, *, &, |, ", ·, ~, #, $, (,), ＼, ;, <,> (add \ before all special characters when used)</li>
+          <li>Not available: /</li>
+      </ul>
+    </div>
+    <div>
+      <h2>inode</h2>
+      <ul>
+          <li>The file system is software that manages auxiliary storage devices.</li>
+          <li>The ultimate goal is to save and use resources as much as possible</li>
+          <li>inode is a structure that stores information about a file stored on a disk.</li>
+          <li>The file is managed with the inode number. The location of the file is managed using inode, and the content of the actual file is stored in the data block.</li>
+      </ul>
+      <h3>Contents stored in the inode structure</h3>
+      <ul>
+          <li>Number of data blocks that the file has</li>
+          <li>Save attributes and access control information of files managed by inode</li>
+          <li>Number of files (or links) that the inode points to</li>
+          <li>Id and group id</li> of the owner who created the file
+          <li> Access time, generation time, modification time.. And so on
+      </ul>
+      In the Inode structure, there is a 16-bit variable called i_mode, which means File mode.<br>
+      The top 4 bits represent the type of file, and the bottom 9 bits represent the access control (user/group/other user) of the file.
+      <h3>Hard Link and Soft Link</h3>
+      <ul>
+          <li>Hard link: Hard link creates a file with a new name by sharing the inode number of an existing file. In other words, a hard link points to two or more file names with the same inode number for one file. In this case, two or more files have the same data and metadata, and the inode contains all the information about the file. Therefore, deleting the original file or one of the hard links after creating the hard link has no effect on the other side.</li> <br>
+          <li>Softlink (Symbolic link or Symlink): Softlink creates a new file that points to an existing file or directory. A soft link is the generation of the inode number of the new file, which points to the pathname of the source file or directory. In this case, when the source file or directory is deleted, the soft link is disconnected and no longer points to that file or directory. This is because the soft link points to the pathname of the source file or directory.</li>
+      </ul>
+      <h3>Softlink and inode</h3>
+      The soft link stores the location of the file in the inode block to the data block.<br>
+      Then, when the user opens the file with the soft link, it moves to the inode stored in the data block and then moves back to the data block.<br>
+      Compared to copying the advantages of softlink, when you think about copying, hardlink copies the actual value, but softlink copies data that contains only the location of the file, so it is good that softlink does not actually copy much data.<br>
+      The disadvantage of hard links is that they can only be used inside the same file system, but soft links can be used because the inode table also uses a method that specifies paths in other file systems!!<br>
+      Therefore, there is no problem if you bet the full path of the original file when you do softlink.<br>
+    </div>
+    <div>
+      <h2>Command</h2>
+      <ul>
+          <li>pwd: Output absolute path to the current working directory</li>
+          <li>cd [directory name]:move location</li>
+          <li>mkdir [option] [directory name]: creating a new directory (-p: also creating subdirectories required to create a directory)</li>
+          <li>rmdir [option] [directory name]: Delete the specified directory (can only be deleted if the directory is empty) (p: Delete the specified directory and delete the parent directory if it is empty)</li>
+          <li>more command: One line for enter, one page for space</li>
+          <li>less command: Show page by page, put q and you're done</li>
+          <li>head command: Show only the first 10 lines. If I say 5, I'll show you the front five lines.</li>
+          <li>tail: Show the back 10 lines, -5 shows only 5 lines at the end -f When you reach the end of a file, you do not monitor changes in the file, but you continue to print it out every time the file changes.</li>
+          <li>cp:copy command</li>
+          <li>mv: The move command dir dir dir (o), dir file (x) file dir (o) file (? - If there is a file, change the name if there is no x), the move does not actually move the data, but only the name changes. </li>
+          <li>ln: Create link -s option (soft link)</li>
+          <li>command date: check date</li>
+      </ul>
+    <div>
+      <h3>ls</h3>
+      Output information about a file or directory
+      <h4>Option</h4>
+        <table class="tg">
+          <thead>
+              <tr>
+                  <th class="tg-0lax">Option</th>
+                  <th class="tg-0lax">Discription</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td class="tg-0lax">-i</td>
+                <td class="tg-0lax">display inode number.</td>
+            </tr>
+            <tr>
+                <td class="tg-0lax">-A, -a</td>
+                <td class="tg-0lax">Shows all surrender (except for A and...)</td>
+            </tr>
+            <tr>
+                <td class="tg-cly1">-C</td>
+                <td class="tg-cly1">(column)classifies output in a vertical manner in the form of multiple columns (default of ls command)</td>
+            </tr>
+            <tr>
+                <td class="tg-cly1">-s</td>
+                <td class="tg-cly1">sizeProvides the size of each item in kilobytes (including indirect blocks).</td>
+            </tr>
+            <tr>
+                <td class="tg-cly1">-F</td>
+                <td class="tg-cly1">Add /(slash) if the file is a directory, *(address) if the file is executable, = (equal) if the file is a socket, |(pipe) if the file is FIFO, and @ if the symbol link is the name of each file.</td>
+            </tr>
+            <tr>
+                <td class="tg-cly1">-d</td>
+                <td class="tg-cly1">Displays information only about the named directory. Useful when using -l because directories are treated like files</td>
+            </tr>
+            <tr>
+                <td class="tg-cly1">-R</td>
+                <td class="tg-cly1"> recursively lists all subdirectories.</td>
+            </tr>
+            <tr>
+                <td class="tg-cly1">-l</td>
+                <td class="tg-cly1">Show mode, number of links, owner, group, size (bytes), and last modification time</td>
+            </tr>
+            <tr>
+                <td class="tg-cly1">-S</td>
+                <td class="tg-cly1">Sorts file names with secondary keys in descending order based on file size.</td>
+            </tr>
+            <tr>
+              <td class="tg-cly1">-u</td>
+              <td class="tg-cly1">Displayed on the screen based on the final access time instead of the final modification time (must be used with the -t flag or -l flag)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+        <h3>od command</h3>
+        <ul>
+            <li>Command to display files in the specified format.</li>
+            <li>If there are no parameters, the standard input is received.</li>
+            <li>If you specify a type of format with the -t option, but no type is specified, -to2 is the default (binary conversion)</li>
+        </ul>
+        <h4>Option</h4>
+        <table class="tg">
+            <thead>
+                <tr>
+                    <th class="tg-lboi">Option</th>
+                    <th class="tg-lboi">Discription</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="tg-lboi">-t</td>
+                    <td class="tg-lboi">output formatting options</td>
+                </tr>
+                <tr>
+                    <td class="tg-lboi">-x</td>
+                    <td class="tg-lboi">View hexadecimal notation</td>
+                </tr>
+                <tr>
+                    <td class="tg-lboi">-c</td>
+                    <td class="tg-lboi">Shown in ASCII characters.(Characterized)</td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+          <h3>touch</h3>
+          <ul>
+            <li>If a file is created and there is a file name, the inode exists.</li>
+            <li>However, if the size is 0, there is an inode, but there is no data block.</li>
+            <li>If you touch a file that already exists, the size and other things remain the same, and the time changes to the current time.</li>
+            <li>The main reason for using this is to change the modification time when making and to compile it again.</li>
+            <li>This is because the time of the original object file of the makefile is compared with the time of the source file.</li>
+            <li>Change the revision time if the file has a new name and an empty file.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

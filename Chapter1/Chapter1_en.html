@@ -3,15 +3,6 @@
   <head>
     <meta charset ="utf-8">
     <title> Unix Chaper 1 Summary</title>
-    <style type="text/css">
-      .tg  {border-collapse:collapse;border-spacing:0;}
-      .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-        overflow:hidden;padding:10px 5px;word-break:normal;}
-      .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-        font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-      .tg .tg-cly1{text-align:left;vertical-align:middle}
-      .tg .tg-0lax{text-align:left;vertical-align:top}
-      </style>
   </head>
   <body>
     <h1>Unix Chaper 1 Summary Unix Overview and Basic Usage
@@ -133,88 +124,7 @@
                 The who command reads the currently accessed user information from the '/var/run/utmp' file. The utmp file stores the user's information when the user logs into the server remotely and removes the stored information when the user logs out of the remote host.<br>
                 It outputs the login name, terminal, login time, remote host, or X display of the user currently connected to the server.
             </div>
-            <div>
-                <h3>ls</h3>
 
-                <h4>Option</h4>
-                <table class="tg">
-                    <thead>
-                        <tr>
-                            <th class="tg-0lax">Option</th>
-                            <th class="tg-0lax">Discription</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="tg-0lax">-i</td>
-                            <td class="tg-0lax">display inode number.</td>
-                        </tr>
-                        <tr>
-                            <td class="tg-0lax">-A, -a</td>
-                            <td class="tg-0lax">Shows all surrender (except for A and...)</td>
-                        </tr>
-                        <tr>
-                            <td class="tg-cly1">-C</td>
-                            <td class="tg-cly1">(column)classifies output in a vertical manner in the form of multiple columns (default of ls command)</td>
-                        </tr>
-                        <tr>
-                            <td class="tg-cly1">-s</td>
-                            <td class="tg-cly1">sizeProvides the size of each item in kilobytes (including indirect blocks).</td>
-                        </tr>
-                        <tr>
-                            <td class="tg-cly1">-F</td>
-                            <td class="tg-cly1">Add /(slash) if the file is a directory, *(address) if the file is executable, = (equal) if the file is a socket, |(pipe) if the file is FIFO, and @ if the symbol link is the name of each file.</td>
-                        </tr>
-                        <tr>
-                            <td class="tg-cly1">-d</td>
-                            <td class="tg-cly1">Displays information only about the named directory. Useful when using -l because directories are treated like files</td>
-                        </tr>
-                        <tr>
-                            <td class="tg-cly1">-R</td>
-                            <td class="tg-cly1"> recursively lists all subdirectories.</td>
-                        </tr>
-                        <tr>
-                            <td class="tg-cly1">-l</td>
-                            <td class="tg-cly1">Show mode, number of links, owner, group, size (bytes), and last modification time</td>
-                        </tr>
-                        <tr>
-                            <td class="tg-cly1">-S</td>
-                            <td class="tg-cly1">Sorts file names with secondary keys in descending order based on file size.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div>
-                <h3>od command</h3>
-                <ul>
-                    <li>Command to display files in the specified format.</li>
-                    <li>If there are no parameters, the standard input is received.</li>
-                    <li>If you specify a type of format with the -t option, but no type is specified, -to2 is the default (binary conversion)</li>
-                </ul>
-                <h4>Option</h4>
-                <table class="tg">
-                    <thead>
-                        <tr>
-                            <th class="tg-lboi">Option</th>
-                            <th class="tg-lboi">Discription</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="tg-lboi">-t</td>
-                            <td class="tg-lboi">output formatting options</td>
-                        </tr>
-                        <tr>
-                            <td class="tg-lboi">-x</td>
-                            <td class="tg-lboi">View hexadecimal notation</td>
-                        </tr>
-                        <tr>
-                            <td class="tg-lboi">-c</td>
-                            <td class="tg-lboi">Shown in ASCII characters.(Characterized)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
         </div>
       </div>
       <div>
