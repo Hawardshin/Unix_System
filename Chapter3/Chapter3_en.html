@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset ="utf-8">
+    <title> Unix Chaper 3 Summary</title>
+    <style type="text/css">
+      .tg  {border-collapse:collapse;border-spacing:0;}
+      .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+        overflow:hidden;padding:10px 5px;word-break:normal;}
+      .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+        font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+      .tg .tg-cly1{text-align:left;vertical-align:middle}
+      .tg .tg-0lax{text-align:left;vertical-align:top}
+      </style>
+  </head>
+  <body>
+    <h1>Chapter3 UNIX FileSystem</h1>
+    <div>
+        <h2>Data pointer according to the size of the inode story</h2>
+        <ul>
+            <li>You can say that all the information that comes out when you point to the data block and ls-al is inode.</li>
+            <li> There are three types of time: creation time, final modification time, and final access time.</li>
+            Coming out of <li>ls-al is final modification time, but if you want to change what you see, you have to give me another option.</li>
+            The size of one data block is 512 bytes. Depending on the size of each file, we use the sigle directive pointer if it exceeds 48 kb in the inode and up to the double directive triangle depending on the size of each file.</li>
+            The directory is a special file.</li>
+            <li>File and inode are called links. A link refers to the connection between the file name and the actual file.</li>
+        </ul>
+    </div>
+    <div>
+        <h1>Command bar</h1>
+        <div>
+            <h2>Simple Command</h2>
+            <ul>
+                <li>cat: simple file view command (-n: row number option): command to display data blocks on the screen</li>
+                <li>ln: Give one file a new name (-s: symbolic link)</li>
+            </ul>
+        </div>
+        <div>
+            <h2>more</h2>
+            <h3>Option</h3>
+            <ul>
+                <li>more [option] file name</li>
+                <li>Output the contents of the file one screen at a time</li>
+            </ul>
+            <h3>Command</h3>
+            <ul>
+                <li>Next page: space</li>
+                <li>Previous page: b</li>
+                <li>End: q</li>
+                <li>Find String / String</li>
+            </ul>
+        </div>
+        <div>
+            <h2>tail</h2>
+            <ul>
+                <li>tail [option] file name</li>
+                <li>Last part of the file output</li>
+            </ul>
+            <h3>Option </h3>
+            <ul>
+                <li>+ Row number: Output from specified row to end</li>
+                <li>-Number: Number of rows to print on the screen</li>
+                <li>-f: File output is not terminated and is repeated periodically</li>
+            </ul>
+        </div>
+        <div>
+            <h2>Cp</h2>
+            <ul>
+                <li>cp [option] Copy original file name File name</li>
+                <li>Copy certain files or directories to a different name</li>
+            </ul>
+            <h3>Option</h3>
+            <ul>
+                <li>-i : Outputs a warning message when overwriting a file</li>
+                <li>-r: Copy Directory</li>
+            </ul>
+            <table class="tg">
+                <thead>
+                    <tr>
+                        <th class="tg-cly1">Usage format</th>
+                        <th class="tg-cly1">동작</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="tg-cly1">cp file1 file2</td>
+                        <td class="tg-cly1">Copy File 1 to File 2</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-cly1">cp files directory</td>
+                        <td class="tg-cly1">Copy files under the same name under the directory</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-cly1">cp-r directory1 directory2</td>
+                        <td class="tg-cly1">Directory 1 is copied to directory 2 all the way to files in directory 1.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h2>rm</h2>
+            <ul>
+                <li>rm [option] file name/directory name</li>
+                <li>Delete the specified file or directory</li>
+                <li>Files deleted once cannot be revived!</li>
+                <li>`rmold': If there is only one link, it will be sent to free pool, but if there are multiple links, only the file will be sent, and the inode and data block will remain the same.</li>
+            </ul>
+            <h3>Option</h3>
+            <ul>
+                <li>-i: Check and delete</li>
+                <li>-f: Delete it unconditionally</li>
+                <li>-r: Delete Directory</li>
+            </ul>
+        </div>
+        <div>
+            <h2>mv</h2>
+            <ul>
+                <li>mv [option] original name new name</li>
+                <li>Rename or move files</li>
+                Using the <li>mv command only changes the name, and there is no change in inode and data block.</li>
+                A mv dir file is impossible.</li>
+            </ul>
+            <h3>Option</h3>
+            <ul>
+                <li>-i: Check and move</li>
+                <li>-f: Delete it unconditionally</li>
+            </ul>
+        </div>
+        <div>
+            <h2>touch</h2>
+            <ul>
+                <li>touch [option] file</li>
+                <li>Create a specified file if it does not exist, change it to the current time or to the specified time</li>
+            </ul>
+            <h3>Option</h3>
+            <ul>
+                <li>-a: Change access time only</li>
+                <li>-c: Do not create a new file if it does not exist
+                <li>-m: Change the modification time only</li>
+                <li>-rref_file: Read time from file</li>
+                <li>-t [[CC]YY]MMDDhhmm[.ss]: Enter the time directly</li>
+            </ul>
+        </div>
+    </div>
+  </body>
+</html>

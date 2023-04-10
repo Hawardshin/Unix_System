@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset ="utf-8">
+    <title> Unix Chaper 5 Summary</title>
+    <style type="text/css">
+      .tg  {border-collapse:collapse;border-spacing:0;}
+      .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+        overflow:hidden;padding:10px 5px;word-break:normal;}
+      .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+        font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+      .tg .tg-cly1{text-align:left;vertical-align:middle}
+      .tg .tg-0lax{text-align:left;vertical-align:top}
+      </style>
+  </head>
+<body>
+  <div>
+    <h2>What is shell</h2>
+    <ul>
+        <li>Processes the input command as an intermediate role between the user and the kernel and informs the execution result.</li>
+        <li>Prompt: Displays the status of the system waiting for command input</li>
+        <li>Promport Settings: Look at $PS1.</li>
+        <li>Standard input/output device: Standard input device (keyboard) → shell → monitor (standard output, standard error)</li>
+        <li>File descriptor: Used to change input/output devices: 0,1,2 (standard input, output, error)</li>
+    </ul>
+    <h2>Type of Shell</h2>
+    <ul>
+        <li>Bone Shell (sh)($), Corn Shell (ksh)($), C Shell (csh)(%), Bash Shell ($), etc.</li>
+        <li>You can look at the $SHELL environment variable for the type.</li>
+        <li>Login Shell: Shell automatically created immediately after user logs in</li>
+        <li>Subcells: Shells run by users themselves</li>
+    </ul>
+    <h2>Command</h2>
+    <ul>
+        <li>echo: Output commands that provide both shell commands and utilities</li>
+        <li>print: shell command, more convenient than echo with options</li>
+    </ul>
+  </div>
+  <div>
+      <h2>Shell Special Character</h2>
+      <h3>*Special characters (meaning all)</h3>
+      <ul>
+          <li>ls h*: Shows all files starting with h. It also includes h
+          <li>ls h*d: Output all files starting with h and ending with d</li>
+      </ul>
+      <h3>? Special Characters</h3>
+      <ul>
+          <li>Use to represent any one character</li>
+          <li>(The ls hello?.c command looks for helloA.c like this, but does not include hello.c.)(meaning only one character)</li>
+      </ul>
+      <h3>[] Special Character </h3>
+      <ul>
+          It represents one of the characters contained in <li>[]. </li>
+          <li>ls hello[123].c If you do this, find all hello1,2,3.</li>
+          <li>ls hello[1-3].c Same meaning</li>
+          <li>ls [A-Za-z]*[0-9]: Output all files that start with an English letter and end with a number</li>
+      </ul>
+      <h3>Other special characters</h3>
+      <ul>
+          <li>- and ~: Special characters representing the directory (old directory/home)</li>
+          <li>; and | (pipes and ;) : A special character that connects commands to commands.</li>
+          <li>" and "" (double quotation marks): String representation, small quotation marks do not interpret, and double quotation marks interpret $'\.</li>
+          <li>'Special character: Use to receive command execution results as a string</li>
+          <li>＼(\): Replace special characters with regular characters with reverse slash special characters</li>
+          <li>>><:Change input/output direction (>:Overwrite,>>:Add) (Command 2>File name: Save to standard error file), (Replace command <File name input to file),</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Variable of Bash Shell</h2>
+      <ul>
+          <li>Variable: Storage for storing information used by the system or user</li>
+          <li>Shell variable: Variable that is currently available only in the shell (check command set) (variable = value)</li>
+          <li>Environmental variable: Available variable in all shells (check command env) (export variable = value)</li>
+          <li>Variable release unset</li>
+      </ul>
+      <h2>Interrupt</h2>
+      <ul>
+          <li>ctrl + c: Stop current command</li>
+          <li>ctrl + D : eof</li>
+          <li>ctrl + \:quit (current command stop)</li>
+          <li>ctrl + S: stop (screen output stopped)</li>
+          <li>ctrl + Q: start (restart screen output)</li>
+          <li>ctrl +? : erase (delete last character)</li>
+          <li>ctrl + U:kill (delete all command lines)</li>
+          <li>ctrl + W: Delete the last word</li>
+          <li>ctrl + Z: command suspended</li>
+      </ul>
+      <h2>Create your own command alias</h2>
+      <ul>
+          <li>alias alias = 'command'</li>
+          <li>Replace multiple commands with one command</li>
+          <li>Factor fails to hand over factor to required command</li>
+          <li>Release: You can use the alias unalias.</li>
+      </ul>
+      <h2>Using Previous Input Commands fc</h2>
+      View previously used commands: fc (fc -l : view by line)
+      <h3>Re-execute command:! </h3>
+      <ul>
+          <li>Editing a command: arrow key, or Esc + k</li>
+          <li>Exploring commands: Esc + /</li>
+          <li> The last here means the most recent.</li>
+      </ul>
+      <table class="tg">
+          <thead>
+              <tr>
+                  <th class="tg-cly1">Command</th>
+                  <th class="tg-cly1">Discription</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td class="tg-cly1">!!</td>
+                  <td class="tg-cly1">Last command execution</td>
+              </tr>
+              <tr>
+                  <td class="tg-cly1">!n</td>
+                  <td class="tg-cly1">Run the nth command</td>
+              </tr>
+              <tr>
+                  <td class="tg-cly1">!-n</td>
+                  <td class="tg-cly1">Run the nth command backwards from the current command</td>
+              </tr>
+              <tr>
+                  <td class="tg-cly1">!String</td>
+                  <td class="tg-cly1">Run the last command among commands that begin with the given string</td>
+              </tr>
+              <tr>
+                  <td class="tg-cly1">&lt;Event command&gt;:p</td>
+                  <td class="tg-cly1">!n Output to the screen without executing a command designated as an event specifier
+              </tr>
+              <tr>
+                  <td class="tg-cly1">^string 1^string 2</td>
+                  <td class="tg-cly1">Run by replacing string 1 in the last command with string 2</td>
+              </tr>
+          </tbody>
+      </table>
+    </div>
+    <div>
+        <h2>Configuration File</h2>
+        <ul>
+            <li>Save commands that run automatically each time a user logs in</li>
+            <li>System Initialization File (/etc/profile, /etc/.login)</li>
+            <li>User initialization file ($HOME/).bashrc, $HOME/.profile etc)</li>
+            <li>Run user initialization file: source command</li>
+        </ul>
+    </div>
+  </body>
+</html>

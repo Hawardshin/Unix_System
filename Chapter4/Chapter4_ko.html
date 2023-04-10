@@ -1,0 +1,209 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset ="utf-8">
+    <title> Unix Chaper 4 Summary</title>
+    <style type="text/css">
+      .tg  {border-collapse:collapse;border-spacing:0;}
+      .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+        overflow:hidden;padding:10px 5px;word-break:normal;}
+      .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+        font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+      .tg .tg-cly1{text-align:left;vertical-align:middle}
+      .tg .tg-0lax{text-align:left;vertical-align:top}
+      </style>
+  </head>
+  <body>
+    <div>
+      <h2>유닉스 편집기의 종류</h2>
+      <h3>1. 행 단위 편집기</h3>
+      <ul>
+        <li>- ed : 유닉스 초기에 사용 → 지금은 거의 사용하지 않음</li>
+        <li>- ex : 단독으로 사용하기 보다는 vi와 연결하여 사용</li>
+      </ul>
+      <h3>2. 화면 단위 편집기</h3>
+      <ul>
+        <li>vim : vi와 유사한 화면편집기 (솔라리스는 vi를 사용시 vim실행)</li>
+        <li>Emacs : 막강한 기능 있으나 설치 필요</li>
+      </ul>
+    </div>
+    <div>
+      <h2>모드</h2>
+      <h3>1. 모드형(Vim)</h3>
+      <ul>
+        <li>명령모드에서 입력한 키는 명령으로 간주</li>
+        <li>입력모드에서 입력한 키는 데이터로 간주</li>
+        <li>모드를 바꾸기 위한 특수 키가 있음 (예: Esc)</li>
+      </ul>
+      <h3>2. 비모드형(한글, 워드)</h3>
+      <ul>
+        <li>입력한 모든 키는 데이터로 간주</li>
+        <li>명령은 특수키와 일반키의 조합으로 구성</li>
+      </ul>
+    </div>
+    <div>
+      <h1>vim의 사용 방법</h1>
+      <ol>
+        <li>디스크에서 파일을 호출한다.</li>
+        <li>편집기에서 파일을 수정한다.(임시 버퍼에 저장)</li>
+        <li>파일을 저장하면 디스크에 저장이 된다.</li>
+      </ol>
+      <h3>특징</h3>
+      <ul>
+        <li>파일 내용을 잘못 수정한 경우 파일 수정 내용을 무시하고 나갈 수 있다. (버퍼의 내용 무시)</li>
+        <li>작업 취소 기능이 있다.</li>
+      </ul>
+      <div>
+        <h2>동작모드 바꾸기</h2>
+        <h3>1. 명령모드 → 입력모드</h3>
+        <table class="tg">
+          <thead>
+            <tr>
+              <th class="tg-cly1"> i</th>
+              <th class="tg-cly1"> 현재 커서의 위치부터 입력 </th>
+              <th class="tg-cly1"> I</th>
+              <th class="tg-cly1"> 현재 커서 줄의 맨 앞에서부터 입력 ( shift + i ) </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="tg-cly1"> a</td>
+              <td class="tg-cly1"> 현재 커서의 위치 다음 칸부터 입력  </td>
+              <td class="tg-cly1"> A  </td>
+              <td class="tg-cly1"> 현재 커서 줄의 맨 마지막부터 입력 ( shift + a) </td>
+            </tr>
+            <tr>
+              <td class="tg-cly1"> o  </td>
+              <td class="tg-cly1"> 현재 커서의 다음 줄에 입력  </td>
+              <td class="tg-cly1"> O </td>
+              <td class="tg-cly1"> 현재 커서의 이전 줄에 입력 ( shfit + o ) </td>
+            </tr>
+            <tr>
+              <td class="tg-cly1"> s </td>
+              <td class="tg-cly1"> 현재 커서 위치의 한 글자를 지우고 입력 </td>
+              <td class="tg-cly1"> S </td>
+              <td class="tg-cly1"> 현재 커서의 한 줄을 지우고 입력 ( shift + s ) </td>
+            </tr>
+          </tbody>
+          </table>
+          <h2>2. 마지막행 모드</h2>
+          <ul>
+            <li>검색, 저장, 행이동을 하는 모드</li>
+            <li>:, /, ? 를 사용해서 주로 이동</li>
+            <li>w, q q!등을 사용(ZZ ==wq)</li>
+          </ul>
+          <h2>3. 다른모드에서 명령모드로 돌아가기 : ESC</h2>
+      </div>
+      <div>
+        <h2>vim 커서이동</h2>
+        <ul>
+          <li>상하좌우 : k,j,h,l</li>
+          <li>현재 행의 처음으로 이동 : ^ 또는 O</li>
+          <li>현재 행의 마지막으로 이동 : $</li>
+          <li>커서를 이전행의 처음으로 이동 : -</li>
+          <li>커서를 다음행의 처음으로 이동 : +</li>
+          <li>커서를 화면 맨위, 중간 아래 : H, M, L</li>
+          <li>커서를 다음단어의 첫글자, 앞단어의 첫글자 다음단어의 마지막 글자 : w,b,e</li>
+        </ul>
+        <h3>화면이동</h3>
+        <ul>
+          <li>한화면 위/아래 : ctrl + b , ctrl + f</li>
+          <li>반화면 위/아래 : ctrl + u, ctrl + d</li>
+        </ul>
+        <h3>지정한 행으로 이동</h3>
+        <ul>
+          <li>:행번호 : 지정한 행으로 이동</li>
+          <li>:$  마지막 행으로 이동</li>
+        </ul>
+        <h3>수정 및 삭제</h3>
+        <ul>
+          <li>r : 커서 위치 문자를 다른문자로 수정</li>
+          <li>cw, #cw : 커서의 위치부터 현재 단어의 끝까지를 새로 입력한 내용으로 수정, Esc를 입력하면 수정이 종료됨.(#은 수정할 단어 수 3cw이렇게 사용가능)</li>
+          <li>s, #s : 커서가 위치한 문자를 ESC키 입력할 때까지 입력한 내용으로 수정(#에는 수정할 문자수)</li>
+          <li>cc : 커서가 위치한 행의 내용을 모두 수정</li>
+          <li>C : 커서의 위치부터 행의 끝까지 수정</li>
+          <li>x, #x : 커서가 위치한 문자 삭제(#개 문자 삭제)</li>
+          <li>dd #dd, : 커서가 위치한 행 삭제</li>
+          <li>u : 실행취소</li>
+        </ul>
+        <h3>undo 를 또 취소 하는법</h3>
+        <ul>
+          <li>`.` : redo 방금 한 명령을 한번 더 쓰는것</li>
+          <li>`r` 문자 바꾸기 r a문자를 a로 바꾼다.</li>
+        </ul>
+        <h3>편집기능</h3>
+        <ul>
+          <li>yy #yy : 커서가 위치한 행을 복사 (3yy하면 커서위치 3행 복사)</li>
+          <li>p : 커서 위치한 행의 아래 쪽에 붙인다.</li>
+          <li>dd #dd : 커서가 위치한 행을 잘라둔다. (#에는 잘라둘 행 수 지정)</li>
+        </ul>
+        <h2>버퍼</h2>
+        <ul>
+          <li>vim은 작업 내용을 버퍼에 저장 → 실행 취소 가능</li>
+          <li>복사하기, 잘라내기에 사용</li>
+        </ul>
+        <h3>버퍼 종류</h3>
+        <ul>
+          <li>Unnamed buffer : 이름 없는 버퍼</li>
+          <li>Named buffers : 이름이 있는 버퍼</li>
+          <li>Numbered buffers : 번호가 있는 버퍼</li>
+        </ul>
+        <h3>사용 예</h3>
+        <ul>
+          <li>“a3yy → 현재 행부터 아래로 3줄을 a버퍼에 저장</li>
+          <li>“ap → a버퍼의 내용을 붙이기</li>
+        </ul>
+        <h2>마지막 행 모드에서 복사하기와 잘라내기</h2>
+        <h3> 범위 지정하기</h3>
+        <ul>
+          <li>1, $또는 % : 1행부터 마지막 행까지 지정</li>
+          <li>1 ,. : 1행부터 커서가 있는 행까지 지정</li>
+          <li>., $ : 커서가 있는 행부터 마지막 행까지 지정</li>
+          <li>,-3 : 현재 행부터 앞으로 3번째 행까지 지정</li>
+          <li>10,20 : 10행부터 20행까지 지정</li>
+        </ul>
+        <h3>복사하기 /잘라내기 (시험에 안나옴)</h3>
+        <ul>
+          <li>:#y : #으로 지정한 행 복사 (:10y : 10행 복사)</li>
+          <li>:<범위>y : 범위로 지정한 행 복사 (:10,20y : 10~20행까지 복사)</li>
+          <li>:#d : #으로 지정한 행 삭제 (:10d :10행 삭제)</li>
+          <li>:<범위>d : 범위로 지정한 행 복사 (:10,20d : 10~20행까지 삭제)]</li>
+          <li>: pu : 현재행 다음에 버퍼의 내용을 붙힌다.</li>
+          <li>#pu  : #으로 지정한 행 다음에 버퍼의 내용 붙힌다.</li>
+        </ul>
+        <h3>검색하기 바꾸기</h3>
+        <ul>
+          <li>/문자열 : 문자열을 아래방향으로 검색</li>
+          <li>? 문자열 : 문자열을 위 방향으로 검색</li>
+          <li>n : 원래 찾는 방향으로 다음 문자열 찾기</li>
+          <li>N : 역방향으로 다음 문자열 찾기</li>
+          <li>:s/문자열1/문자열2 : 커서가 위치한 행의 첫번째 문자열1을 문자열2로 바꾼다.</li>
+          <li>:s/문자열1/문자열2/g : 파일 전체에서 바뀍</li>
+          <li>:<범위>s/문자열1/문자열2 : 범위 안의 모든행의 각 행의 첫번째 문자열만 바꾸기(g를 붙히면 모든행에 모든문자열)</li>
+        </ul>
+        <h3>기타 명령어</h3>
+        <ul>
+          <li>`:r 파일명 : 기존의 파일을 불러온다.`</li>
+          <li>`:e 파일명 : 지정된 파일로 전환한다.`</li>
+          <li>`ctrl l` 을 누르면 화면정렬이 된다.(화면이 꺠질 때 사용)</li>
+          <li>:r파일명 : 지정한 파일 읽어서 현재 커서 위치로 삽입</li>
+          <li>:e 파일명 :지정한 파일로 전환 (기존 파일 저장후 실행)</li>
+          <li>:n 다음파일로 이동</li>
+        </ul>
+        <h3>vim에서 쉘명령 실행</h3>
+        <ul>
+          <li>:! 쉘명령 : vim을 잠시 중단하고 쉘명령 실행 (돌아오려면 엔터)</li>
+          <li>:sh : vim을 잠시 빠져나가서 쉘명령 실행 (돌아오려면 exit)</li>
+        </ul>
+        <h3>기타 명령키</h3>
+        바로 직전에 했던 명령 반복 : .
+        <h3>vim 환경설정</h3>
+        <ul>
+          <li>:set nu(nonu) : 각 행 번호표시(감추기)</li>
+          <li>:set : set으로 설정한 모든 vim 변수 출력</li>
+          <li>:set all  : 모든 vim변수와 현재 값 출력</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

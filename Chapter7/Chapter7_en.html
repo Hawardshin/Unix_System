@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title> Unix Chaper 7 Summary</title>
+    <style type="text/css">
+        .tg {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        .tg td {
+            border-color: black;
+            border-style: solid;
+            border-width: 1px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+        }
+
+        .tg th {
+            border-color: black;
+            border-style: solid;
+            border-width: 1px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+        }
+
+        .tg .tg-cly1 {
+            text-align: left;
+            vertical-align: middle
+        }
+
+        .tg .tg-0lax {
+            text-align: left;
+            vertical-align: top
+        }
+    </style>
+</head>
+<body>
+  <h1>Chapter7 Searching for files and directories</h1>
+  <div>
+      <h2>grep command</h2>
+      <ul>
+          <li>grep [option] pattern file names</li>
+          <li>Search for specific strings (patterns) in the specified file</li>
+          <li>Pattern: Characters, strings, sentences, regular expression (/li>)
+          <li>egrep: grep command using extended regular expression</li>
+          <li>fgrep: string search, interpreting all characters in a string as regular characters Disable regular expressions Literally search for all regular expressions special characters</li>
+      </ul>
+      <h3>Option</h3>
+      <table class="tg">
+          <thead>
+              <tr>
+                  <th class="tg-cly1">option </th>
+                  <th class="tg-cly1">fuction</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td class="tg-cly1">-i </td>
+                  <td class="tg-cly1">Search case-insensitive</td>
+              </tr>
+              <tr>
+                  <td class="tg-cly1">-l </td>
+                  <td class="tg-cly1">output file name containing the pattern</td>
+              </tr>
+              <tr>
+                  <td class="tg-cly1">-n </td>
+                  <td class="tg-cly1">Each line's number is also output</td>
+              </tr>
+              <tr>
+                  <td class="tg-cly1">-v </td>
+                  <td class="tg-cly1">Output lines that do not match the specified pattern</td>
+              </tr>
+              <tr>
+                  <td class="tg-cly1">-c </td>
+                  <td class="tg-cly1">Output of the number of lines that match the pattern</td>
+              </tr>
+              <tr>
+                  <td class="tg-cly1">-w</td>
+                  <td class="tg-cly1">Search only for patterns in one word</td>
+              </tr>
+          </tbody>
+      </table>
+      <h3>Regular expression</h3>
+      A formal language used to represent a set of strings with a particular rule
+      <h3>Component</h3>
+      <ul>
+          <li>Anchor: Express the position of the pattern in one line when searching (^, $)</li>
+          <li>Character Set: Express one or more characters (alphabet, number, .,[],...)</li>
+          <li>Modifier: Specify the number of iterations of the previous character set (*)</li>
+      </ul>
+      <h3>Special Character</h3>
+      <table class="tg">
+          <thead>
+              <tr>
+                  <th class="tg-cly1">character</th>
+                  <th class="tg-cly1">mean</th>
+                  <th class="tg-cly1">example</th>
+                  <th class="tg-cly1">result</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td class="tg-cly1">^</td>
+                  <td class="tg-cly1">Beginning of line</td>
+                  <td class="tg-cly1">^String</td>
+                  <td class="tg-cly1">All rows starting with a string</td>
+              </tr>
+              <tr>
+                  <td class="tg-cly1">$</td>
+                  <td class="tg-cly1">End of line</td>
+                  <td class="tg-cly1">'string $'</td>
+                  <td class="tg-cly1">All rows ending in a string</td>
+              </tr>
+              <tr>
+                  <td class="tg-cly1">.</td>
+                  <td class="tg-cly1">One letter</td>
+                  <td class="tg-cly1">‘a…b’</td>
+                  <td class="tg-cly1">One character correspondence, searching for five characters starting with a and ending with b</td>
+              </tr>
+              <tr>
+                  <td class="tg-cly1">[ ]</td>
+                  <td class="tg-cly1">One of the letters in parentheses</td>
+                  <td class="tg-cly1">‘[Pp]attern’</td>
+                  <td class="tg-cly1">Searching for a line that shows a pattern or pattern</td>
+              </tr>
+              <tr>
+                  <td class="tg-cly1">[^]</td>
+                  <td class="tg-cly1">Non-character in parentheses</td>
+                  <td class="tg-cly1">‘[^a-m]att’</td>
+                  <td class="tg-cly1">Search for lines that do not appear from a to m before att</td>
+              </tr>
+              <tr>
+                  <td class="tg-cly1">*</td>
+                  <td class="tg-cly1">No preceding entry or repeat multiple times</td>
+                  <td class="tg-cly1">‘ab*’</td>
+                  <td class="tg-cly1">Search for lines that do not have b after a or appear repeatedly</td>
+              </tr>
+          </tbody>
+      </table>
+      Make sure to wrap the pattern with 'minor quotation marks'!
+  </div>
+  <div>
+      <h2>find</h2>
+      <ul>
+          <li>Used by users to find specific files that exist on the system</li>
+          <li>Specify search scope in directory units</li>
+          <li>You can search by combining the properties of a file, such as its name, owner, access, and creation date.</li>
+          <li>Can print the absolute path of a file or execute certain commands for a file that matches the expression</li>
+          <li>find path search conditions [action]</li>
+          <ul>
+              <li>Path: Absolute or relative path to the directory where you want to find the file</li>
+              <li>Search conditions: Search criteria for finding files</li>
+              <li>Operation: Specify the action to be performed after finding the file location, and the default action is to output the absolute path to the screen</li>
+          </ul>
+      </ul>
+      <h2>Which Command</h2>
+      Find the location of the command file and output, find the file in the path specified by the PATH environment variable
+  </div>
+</body>
+</html>

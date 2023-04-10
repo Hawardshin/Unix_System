@@ -1,0 +1,210 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset ="utf-8">
+    <title> Unix Chaper 4 Summary</title>
+    <style type="text/css">
+      .tg  {border-collapse:collapse;border-spacing:0;}
+      .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+        overflow:hidden;padding:10px 5px;word-break:normal;}
+      .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+        font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+      .tg .tg-cly1{text-align:left;vertical-align:middle}
+      .tg .tg-0lax{text-align:left;vertical-align:top}
+      </style>
+  </head>
+  <body>
+    <h1>Chapter4 Vim manunal</h1>
+  <div>
+    <h2>Type of Unix Editor</h2>
+    <h3>1. Row-by-row editor</h3>
+    <ul>
+        <li>- ed: Used early in Unix → rarely used now</li>
+        <li>-ex: Use in connection with vi rather than alone</li>
+    </ul>
+    <h3>2. Screen unit editor</h3>
+    <ul>
+        <li>vim: Screen editor similar to vi (solaris runs vim when using vi)</li>
+        <li>Emacs: Powerful function but requires installation</li>
+    </ul>
+  </div>
+  <div>
+      <h2>Mode</h2>
+      <h3>1. Mode type (Vim)</h3>
+      <ul>
+          <li>Key entered in command mode is considered a command</li>
+          <li>Key entered in input mode is considered data</li>
+          <li>There is a special key to change mode (e.g. Esc)</li>
+      </ul>
+      <h3>2. Non-mode type (Korean, Word)</h3>
+      <ul>
+          <li>All keys entered are considered data</li>
+          <li>The command consists of a combination of special and regular keys</li>
+      </ul>
+  </div>
+  <div>
+      <h1>How to use vim</h1>
+      <ol>
+          <li>Call files from disk.</li>
+          <li>Modify the file in the editor.(Save in Temporary Buffer)</li>
+          <li>When you save the file, it is saved to disk.</li>
+      </ol>
+      <h3>Characteristics</h3>
+      <ul>
+          <li>If you modify the file contents incorrectly, you can ignore the file modifications and leave. (Ignores buffer content)</li>
+          <li>There is a job cancellation function.</li>
+      </ul>
+      <div>
+          <h2>Change operation mode</h2>
+          <h3>1. Command mode → Input mode</h3>
+          <table class="tg">
+              <thead>
+                  <tr>
+                      <th class="tg-cly1"> i</th>
+                      <th class="tg-cly1">Enter from the current cursor position</th>
+                      <th class="tg-cly1"> I</th>
+                      <th class="tg-cly1">Enter from the beginning of the current cursor line (shift + i) </th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td class="tg-cly1"> a</td>
+                      <td class="tg-cly1">Enter the current cursor from the next column
+                      <td class="tg-cly1"> A </td>
+                      <td class="tg-cly1">Enter from the end of the current cursor line (shift + a) </td>
+                  </tr>
+                  <tr>
+                      <td class="tg-cly1"> o </td>
+                      <td class="tg-cly1">Enter the next line of the current cursor</td>
+                      <td class="tg-cly1"> O </td>
+                      <td class="tg-cly1">Enter the previous line of the current cursor (shfit + o) </td>
+                  </tr>
+                  <tr>
+                      <td class="tg-cly1"> s </td>
+                      <td class="tg-cly1">Clear one letter of the current cursor position and enter </td>
+                      <td class="tg-cly1"> S </td>
+                      <td class="tg-cly1">Erase one line of the current cursor and enter (shift + s) </td>
+                  </tr>
+              </tbody>
+          </table>
+          <h2>2. Last row mode</h2>
+          <ul>
+              <li>Mode that searches, saves, and moves rows</li>
+              Use <li>:, /, ? to move mainly</li>
+              Use <li>w, qq!, etc. (ZZ==wq)</li>
+          </ul>
+          <h2>3. Return to command mode from another mode: ESC</h2>
+      </div>
+      <div>
+        <h2>vim Move cursor</h2>
+        <ul>
+            <li>Up, down, left, right: k,j,h,l</li>
+            <li>Going to the beginning of the current row: ^ or O</li>
+            <li>Move to the end of the current row: $</li>
+            <li>Move the cursor to the beginning of the previous row: -</li>
+            <li>Move the cursor to the beginning of the next line: +</li>
+            <li>Cursor at the top of the screen, middle bottom: H, M, L</li>
+            <li>Cursor is the first letter of the next word, the first letter of the previous word, the last letter of the next word: w,b,e</li>
+        </ul>
+        <h3>Moving screen</h3>
+        <ul>
+            <li>Up/down on one screen: ctrl+b, ctrl+f</li>
+            <li>Top/Bottom of the screen: ctrl +u, ctrl +d</li>
+        </ul>
+        <h3>Go to the specified row</h3>
+        <ul>
+            <li>:Row number: Go to the specified row</li>
+            <li>:$ Move to last row</li>
+        </ul>
+        <h3>Modify and delete</h3>
+        <ul>
+            <li>r: Modify cursor position characters to other characters</li>
+            <li>cw, #cw: Modify the cursor position to the end of the current word with the new input, enter Esc, and the modification is finished. (# can be used like 3cw words to modify)</li>
+            <li>s, #s: Modify the character where the cursor is located to the content you enter until you enter the ESC key (# is the number of characters to modify)</li>
+            <li>cc: Modify all the contents of the row where the cursor is located</li>
+            <li>C: Modify cursor position to end of row</li>
+            <li>x, #x: Delete the character where the cursor is located (#Delete the character)</li>
+            <li>dd #dd, : Delete row where cursor is located</li>
+            <li>u: Undo</li>
+        </ul>
+        <h3>How to cancel undo again</h3>
+        <ul>
+            <li>`.` :redo to write the command you just did again</li>
+            <li>Change 'r' characters Replace 'ra' characters with 'a'.</li>
+        </ul>
+        <h3>Edit Function</h3>
+        <ul>
+            <li>yy #yy: Copy the row where the cursor is located (copy cursor position 3 rows if 3yy)</li>
+            <li>p: Attach to the bottom of the row where the cursor is located.</li>
+            <li>dd #dd: Cut the row where the cursor is located. (# specifies the number of rows to cut)</li>
+        </ul>
+        <h2>Buffer</h2>
+        <ul>
+            <li>vim saves work to buffer → undoable</li>
+            <li>Copy, use for cut</li>
+        </ul>
+        <h3>Buffer Type</h3>
+        <ul>
+            <li>Unnamed buffer: Unnamed buffer</li>
+            <li>Named buffers: named buffer</li>
+            <li>Numbered buffers: numbered buffers</li>
+        </ul>
+        <h3>Usage example</h3>
+        <ul>
+            <li>"a3yy → Save 3 lines down from the current row to a buffer</li>
+            <li>"ap → aBuffer Addition</li>
+        </ul>
+        <h2>Copy and Cut in Last Row Mode</h2>
+        <h3>Range</h3>
+        <ul>
+            <li>1, $, or %: Specify line 1 to line last</li>
+            <li>1,. : Specify from row 1 to row with cursor</li>
+            <li>, $: Specify the row with the cursor to the last row</li>
+            <li>,-3 : Specify from current row to forward 3rd row</li>
+            <li>10,20: Specify lines 10 to 20</li>
+        </ul>
+        <h3>Copy/Cut (Not on the test)</h3>
+        <ul>
+            <li>:#y: Copy the row specified by # (:10y: Copy 10 rows)</li>
+            <li>:<range>y: Copy rows specified in the range (:10,20y: Copy rows 10 to 20)</li>
+            <li>Delete row specified by:#d:# (:10d:Delete row 10)</li>
+            <li>:<range>d: Copy rows specified in the range (:10,20d: delete rows 10 to 20)]</li>
+            <li>:pu: Attach the contents of the buffer after the current row.</li>
+            <li>#pu: Attach the contents of the buffer after the row specified by #.</li>
+        </ul>
+        <h3>Change Search</h3>
+        <ul>
+            <li>/String: Search string down</li>
+            <li>? String: Search string up</li>
+            <li>n: Find the next string in the original direction</li>
+            <li>N: Find the next string in the reverse direction</li>
+            <li>:s/string1/string2: Replace the first string1 of the row where the cursor is located with string2.</li>
+            <li>:s/string1/string2/g: switch across files</li>
+            <li>:<range>s/string1/string2: Replace only the first string of each row of all rows in the range (all strings in all rows if g is attached)</li>
+        </ul>
+        <h3>Other commands</h3>
+        <ul>
+            <li>':r File name: Load existing file.`</li>
+            <li>':e File name: Switch to the specified file.`</li>
+            Press <li>`ctrl' to align the screen. (Use when the screen is cracked)</li>
+            <li>:r File name: Read the specified file and insert it into the current cursor location</li>
+            <li>:e File name: Switch to the specified file (Save and run the existing file)</li>
+            <li>:n Go to next file</li>
+        </ul>
+        <h3>Execute shell command in vim</h3>
+        <ul>
+            <li>:! Shell command: Stop vim for a while and execute shell command (Enter to return)</li>
+            <li>:sh:Exit vim for a while and execute shell command (exit to return)</li>
+        </ul>
+        <h3>Other command keys</h3>
+        Repeat command just before :.
+        <h3>vim Configuration</h3>
+        <ul>
+            <li>:set nu(nonu):display each row number (detector)</li>
+            <li>:set:output all vim variables set to set</li>
+            <li>:set all: Output all vim variables and current values</li>
+        </ul>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset ="utf-8">
+    <title> Unix Chaper 8 Summary</title>
+  </head>
+  <body>
+    <h1>Learning the Chapter 08 Process and User Commands</h1>
+    <div>
+        <h2>Process </h2>
+        <ul>
+            <li>A running program</li>
+            <li>System Process: Performing functions required for Unix operation</li>
+            <li>User Processes: Processes Executed by Users</li>
+            <li>If you terminate the process, the child processes are terminated as well.</li>
+            <li>You need to know the PID or process name when you exit the process.</li>
+        </ul>
+        <h3>Type</h3>
+        <ul>
+            <li>Daemon: A process run by the Unix kernel that provides specific services</li>
+            <li>Parents, children, orphans, and zombies: Parents create children, and children return the results to their original parents. If the parent is terminated during execution, it is called orphan, and the orphan process is called the first process is the new parent, and the parent process is called the zombie process if the system resources are not recovered even if the child process is terminated.</li>
+        </ul>
+        <h3>Command</h3>
+        <ul>
+            <li>View process list: ps, pgrep</li>
+            <li>Ending the process: kill pkill</li>
+            <li>Forground (potential) Background (rear) Operation Control: fg,bg,jobs</li>
+        </ul>
+        <h3>ps process information output</h3>
+        <ul>
+            <li>ps [option]</li>
+            <li>process status</li>
+            <li>Output process information (pid, terminal, cpu time, command)</li>
+            <li>-e : Output all process information in the system</li>
+            <li>-f: Output detailed information about the process</li>
+            <li>-u UID : Output all processes for a specific user</li>
+        </ul>
+        <h3>PS -f Output Information</h3>
+        <ul>
+            <li>UID: User ID</li> that executed the process
+            <li>PID: Process number</li>
+            <li>PPID: Parent process number</li>
+            <li>C: Process priority</li>
+            <li>STIME: Output process start time in hour:minute:second format</li>
+            <li>TTY: The type and number of the device on which the process was executed</li>
+            <li>CMD: Name of program running (command)</li>
+        </ul>
+        <h3>pgrep Searching for specific process information </h3>
+        <ul>
+            <li>pgrep [option] pattern</li>
+            <li>Find by process name and print out information</li>
+            <li>With special commands unique to Solaris
+            <li>ps[option] | same as grep pattern.</li>
+            <li>-x : Output process information exactly matching the pattern</li>
+            <li>-n : The most recent process output with patterns</li>
+            <li>-Uuid: Output all processes for a particular user</li>
+            <li>-I: Output PID and Process Name</li>
+            <li>-tterm : Output process information related to a specific terminal</li>
+        </ul>
+        <h2>kill</h2>
+        <ul>
+            <li>kill [signal] pid</li>
+            <li>Sends a signal to the process specified by pid</li>
+            <li>If you don't specify a signal, send signal 15 (termination).</li>
+            <li>Only the user's process can be terminated.</li>
+            <li>The administrator can terminate all processes.</li>
+        </ul>
+
+        <h3>Ending signal</h3>
+        <ul>
+            <li>1 SIGHUP: Occurs when the terminal is disconnected</li>
+            <li>2 SIGINT: Usually caused by Ctrl-C </li>
+            <li>9 SIGKILL: Force end of process. Cannot be ignored</li>
+            <li>15 SIGTERM: Process termination, negligible, basic signal to send kill command</li>
+        </ul>
+        <h3>End of process pkill</h3>
+        <ul>
+            <li>pkill [Signal] Process name</li>
+            <li>Sends the specified signal by finding the process with the command name of the process</li>
+            <li>Only available for solaris</li>
+            <li>Only user-owned processes can be terminated</li>
+            <li>pkill sleep (example of use)</li>
+        </ul>
+    </div>
+    <div>
+      <h2>Process Management Tools</h2>
+      <h3>prstat</h3>
+      <ul>
+          <li>prstat [Option]</li>
+          <li>Output statistics of an operating process</li>
+          <li>Automatically update process information at regular time intervals</li>
+          <li>End: q</li>
+          <li> -a: Separate process and user statistics and output</li>
+          <li> -c: Print new information at the bottom of the existing content without duplicating it</li>
+          <li> -s key: Sort according to key and output. (Key: cpu, pri, rss, size, time)</li>
+          <li> -uuuid: Outputs only process information belonging to the euid</li>
+          <li> -Uuid: Outputs only process information belonging to the corresponding uid</li>
+      </ul>
+      <h3>top</h3>
+      <ul>
+          <li>top [Option]</li>
+          <li>Periodically outputting information about the current running process</li>
+          <li>Equipped as a basic package from Solaris 11</li>
+          <li>Output detailed summary information</li>
+          <li>End: q</li>
+      </ul>
+  </div>
+  <div>
+      <h2>Understanding foreground and background tasks</h2>
+      <h3>Work (job)</h3>
+      <ul>
+          <li>Unit in which the shell manages the process</li>
+          <li>Shell starts and controls the job (Give Job ID)</li>
+          <li>Unix's processes can be divided into foreground and background tasks</li>
+      </ul>
+      <h3>Foreground Processing</h3>
+      Processing method in which no other commands can be entered because the prompt is not output until the user-entered command is executed and the result is output (normal processing
+      <h3>Background Processing</h3>
+      When the command is finished, the next prompt will be printed, regardless of the result, allowing you to enter another command (and attach it to the end of the command)
+  </div>
+  <div>
+      <h2>Job Control Command – jobs</h2>
+      <ul>
+          <li>- Outputs all background jobs if no task number is specified</li>
+          <li>- If you specify a specific task number, only the information for that task is output</li>
+      </ul>
+      <h3>Work number</h3>
+      <ul>
+          <li>It increases sequentially every time you run it in the background with a task number.[1],[2],[3] …</li>
+          <li>% number: Outputs task information for that number</li>
+          <li>%+ or %%: Outputs task information with a task order of +</li>
+          <li>%- : Outputs task information with task order –</li>
+          <li>+ is the most recent approach task - + just before </li>
+          <li>Status of operation: Running, Done, Terminated, Stopped</li>
+      </ul>
+      <h3>Switch and Shut Down Task Commands</h3>
+      <ul>
+          <li>ctrl + z or stop [% job number] : Stop foreground work. (Not End, but Suspended)</li>
+          <li>bg[% job number]: Converts the job indicated by the job number into a background job.</li>
+          <li>fg [% job number]: Converts the job indicated by the job number to a foreground job.</li>
+      </ul>
+      <h3>noohup command&</h3>
+      <ul>
+          <li>Keep running background tasks after logging out</li>
+          <li>When you log out, all running tasks end</li>
+          <li>Execution results and error messages: Save to nohup.out file</li>
+      </ul>
+  </div>
+  <div>
+      <h2>View user information</h2>
+      <ul>
+          <li>View login user information: users (output current login user name), who (output system user information), w (output user information and current job information)</li>
+          <li>View user's own information: whoami (output only self-information among who commands), whoami (output login user information), Id</li>
+          <li>Switch user:su (root account if there are no options) (specify username: change to specified user), (-:root or specified user's initialization file is executed, and the working directory is also changed to user home directory)</li>
+      </ul>
+  </div>
+  </body>
+
+</html>
