@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Chapter 12.Understanding Unix Shell</title>
+<meta charset="utf-8">
+</head>
+<body>
+<h1>Chapter 12.Understanding Unix Shell</h1>
+<h2>Shell</h2>
+<p>What is shell: Programs that provide a user interface</p>
+<h3>Shell function</h3>
+<ul>
+<li>Command interpreter function
+<ul>
+<li>Interpret and forward commands between the user and the kernel.</li>
+<li>Interpret commands that you enter or read from a file and run the appropriate program</li>
+</ul>
+</li>
+<li>Programming function
+<ul>
+<li>The shell has its own programming function, so it can be programmed</li>
+<li>You can use multiple commands to produce repetitive tasks into a single program.</li>
+</ul>
+</li>
+<li>User Configuration Features
+<ul>
+<li>Setting up the user experience using the initialization file function</li>
+<li>Each user can set the characteristics of the environment to the initialization file, including setting the path to the command, setting default permissions for new files, and setting various environmental variables.</li>
+<li>This initialization file runs when you log in to set up your initial environment</li>
+</ul>
+</li>
+</ul>
+<h2>Type of Shell</h2>
+<h3>Bone Shell (sh)</h3>
+<ul>
+Li is the first shell.</li>
+<li>Many shell scripts that perform system management tasks are based on this shell.</li>
+<li>It does not provide user convenience functions such as history function, alias function, and task control.</li>
+<li>In most Unix systems, the bonshell (/usr/bin/sh) is replaced by a cornshell on Solaris 11</li>
+</ul>
+<h2>C shell(csh)</h2>
+
+<ul>
+<li>Expanding the features of Bonshell, including user convenience features such as Alias and History</li>
+<li>The syntax for writing shell scripts is the same as the C language, so it is called the C shell</li>
+<li>alias clear (alias command) is different.)</li>
+<li>! 23, !l : Execute 23rd command!l : Execute command starting with l.</li>
+<li>General user: %, root user: #</li>
+<li>setenv [environment variable name value]</li>
+<li>set [environmental variable name = value]</li>
+<li>. login : Run only once when logging in, environment variables, terminal settings</li>
+<li>.cshrc: When creating a subshell when logging in, shell variables, aliases, and history settings</li>
+</ul>
+
+<h2>Conshell (ksh)</h2>
+
+<ul>
+<li>Maintains compatibility with Bone Shell</li>
+<li>It has the advantage of fast processing speed while providing all the features of the C shell such as history function and alias function.</li>
+<li>General user: $, root user: #</li>
+<li>Set environment and shell variables: Same as bash</li>
+<li>Save it to the initialization file.kshrc and it will be aliased every time you log in</li>
+<li>History setting (HZ=200): Meaning that 200 commands can be saved Default value is 100</li>
+<li>Save recent HZ commands to a history file (~/.sh_history) when logging out</li>
+<li>history command: Number 16 recently used commands together. (r rerun command)</li>
+<li>Features: Direction key function, tab auto complete</li>
+</ul>
+<h3>System Initialization File</h3>
+<ul>
+<li>/etc/profile: This file will be initialized by all users on the system.</li>
+<li>~/.profile : Provided by default to all users using the cornshell, saving environment variable settings such as configuration files, prompts, and command paths that vary from system user to system user</li>
+<li>~/.kshrc: A configuration file from a cornshell, also runs on a child shell, alias settings, configuration settings using set</li>
+</ul>
+<h2>Bash Shell</h2>
+<p>Includes convenient features of C shell and console while maintaining compatibility with this shell.</p>
+<p>It is an open software that follows GNU and acts as the default shell for Linux, also known as the Linux shell
+<h2>stty terminal function setting</h2>
+<ul>
+<li>Set terminal option function</li>
+<li>If you do not specify an option and mode, output the current setting value</li>
+<li>Option -a: Outputs terminal-wide option values</li>
+<li>Mode</li>
+<ul>
+<li>erase: Specify delete key</li>
+<li>rows: Specify the number of rows in the terminal</li>
+<li>columns: Specify the number of columns in the terminal</li>
+</ul>
+</ul>
+</body>
+</html>

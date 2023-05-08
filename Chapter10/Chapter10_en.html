@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Learning Internet and communication commands</title>
+</head>
+<body>
+
+<h1>Chapter 10. Learning Internet and communication commands</h1>
+
+<h2>Direct communication between users</h2>
+
+<h3>write</h3>
+
+<ul>
+<li>write username [terminal name]</li>
+<li>Send a message to the logged-in user.</li>
+<li>Transfer: Ctrl + D</li>
+<li>Terminal name: When logging in with the same user ID several times, the terminal name may be designated.</li>
+</ul>
+
+<h3>wall</h3>
+
+<ul>
+<li><strong>wall [ filename ]</strong></li>
+<li>Sends a message to all users who are logged in to the system</li>
+<li>File name: Specifies when the message is written as a file in advance.</li>
+<li>Normal users must belong to a tty group to use the command.</li>
+<li>PATH = $PATH:/usr/sbin to use it</li>
+</ul>
+
+<h3>talk</h3>
+
+<ul>
+<li>talk user address [terminal name]</li>
+<li>Talk 1:1 with other users</li>
+<li>You can talk to users on other systems as well as on the same system</li>
+<li>cctrl + c can get out.</li>
+<li>User address</li>
+<ul>
+<li>For the same system: User name</li>
+<li>For other systems: username@hostname</li>
+</ul>
+<li>If you can't talk: You need to activate the talk service!!</li>
+</ul>
+
+<h3>mesg</h3>
+
+<ul>
+<li>mesg [n|y]</li>
+<li>Allow/prohibit output of write, wall, and talk messages to the device</li>
+<li>Option:</li>
+<ul>
+<li>y: Allow message reception</li>
+<li>n: Refuse to receive messages</li>
+</ul>
+</ul>
+<h1>mailx</h1>
+<ul>
+<li>Mail server: A program that provides mail services or the system on which the program is running (POP3, SMTP)</li>
+<li>Mail client: Programs that request mail services (mailx, mail, Outlook Express)</li>
+<li>Mail service: /var/mail/user1</li>
+<li>mailx [option] email address</li>
+Li? is the default promo port.</li>
+<li>Reading mail is stored in the home directory mbox file.</li>
+<li>Default mailbox for receiving mail: /var/mail/username</li>
+<li>Option: -s: Title</li>
+</ul>
+
+<h1>finger</h1>
+<ul>
+<li><code>finger [username | username @hostname] | @hostname]</code></li>
+<li>Output of logged-in user information,</li>
+<li>In addition to the results of who, output additional information such as the user's full name (/etc/passwd), host name, etc.</li>
+<li>Printing user's detailed personal information</li>
+<li>Outputs user information logged into another host.</li>
+<li>options
+<ul>
+<li>User name: Output specified user information</li>
+<li>Username@Host: Output of specific user information for the specified host.</li>
+<li>@Host: Output user list for specified host</li>
+</ul>
+</li>
+</ul>
+
+<h1>Other commands</h1>
+<ul>
+<li>hostname: Output the hostname of the current system</li>
+<li>nslookup [domain name]: Interactively query the domain name or IP address with the DNS server and receive a response. (Termination: exit)</li>
+<li>ping: <code>ping hostname or IP address</code>Check if the system is connected over the network (although recently restricted by security)</li>
+</ul>
+
+
+<h1>ftp</h1>
+
+<ul>
+<li><code>ftp hostname</code></li>
+<li>file transfer protocol</li>
+<li>Command used to upload/download files to other servers over the Internet</li>
+<li>Available only when ftp service is enabled</li>
+</ul>
+
+<h3>Anonymous ftp</h3>
+
+<ul>
+<li>The ftp server that allows you to send and receive files without an account on that server</li>
+<li>Available only if provided by the host
+</ul>
+
+<h3>Transmission mode</h3>
+
+<ul>
+<li>ASCII mode: plain text file</li>
+<li>Binary mode: Images, videos, compressed files, etc.</li>
+</ul>
+
+<h3>Internal Command</h3>
+
+<ul>
+<li>cd: Move server directory</li>
+<li>lcd:moving client directory</li>
+<li>ls: Server Directory Contents</li>
+<li>prompt: Do not ask y/n when sending multiple messages</li>
+<li>ascii:ascii file transfer mode</li>
+<li>bin: Binary transmission mode</li>
+<li>get/get: Download files (multiple files)</li>
+<li>put/mput: Upload files (multiple files)</li>
+<li>dir: Server directory contents</li>
+<li>pwd: Check server directory location</li>
+<li>!pwd: Check local directory</li>
+</ul>
+
+
+</body>
+</html>

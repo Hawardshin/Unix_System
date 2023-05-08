@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>파일 아카이브</title>
+</head>
+<body>
+	<h1>파일 아카이브 : tar</h1>
+
+	<p>tar(tape archive)는 디렉토리가 여러 가지로 연결되어 있는 것을 하나로 묶은 것입니다. 압축은 되어 있지 않습니다.</p>
+
+	<h3>옵션</h3>
+	<ul>
+		<li><code>tar cvf . my.tar</code> : 현재 디렉토리 아래 모든 폴더를 압축 (아카이브 생성)</li>
+		<li><code>tar xvf my.tar</code> : 압축 해제</li>
+		<li><code>tar tvf my.tar</code> : 목록을 볼 수 있습니다.</li>
+		<li><code>uvf</code> : 업데이트</li>
+		<li><code>rvf</code> : 파일 추가하기</li>
+	</ul>
+
+	<h1>gzip</h1>
+
+	<p>gzip은 확장자가 .gz인 압축파일을 생성합니다. 압축률이 더 높습니다.</p>
+
+	<h3>옵션</h3>
+	<ul>
+		<li><code>-d</code> 옵션: 압축 해제 (gunzip과 동일)</li>
+		<li><code>-l</code> : 압축된 파일의 내용 출력</li>
+		<li><code>-r</code> : 현재 디렉토리부터 하위 디렉토리까지 모두 압축</li>
+		<li><code>-t</code> : 압축 파일 검사</li>
+		<li><code>-v</code> : 압축 정보 화면에 출력</li>
+		<li><code>-g</code> : 최대한 압축</li>
+	</ul>
+
+	<h1>Zip</h1>
+
+	<p>Zip은 .gz인 압축파일을 생성합니다.</p>
+
+	<h3>옵션</h3>
+	<ul>
+		<li><code>-v</code> : 압축 정보 화면에 출력</li>
+		<li><code>-r</code> : 디렉토리 압축</li>
+		<li><code>-u</code> : 수정되거나 추가된 파일만 출력</li>
+	</ul>
+
+	<h1>bzip2</h1>
+
+	<p>bzip2는 gzip, zip에 비해 압축률은 높고 속도는 약간 느립니다. .bz2 파일을 생성합니다.</p>
+
+	<h3>옵션</h3>
+	<ul>
+		<li><code>-d</code> : 파일 압축을 해제</li>
+		<li><code>-l</code> : 압축된 파일의 내용을 보여줌.</li>
+    <h1>Zip</h1>
+	<ul>
+		<li>zip [option] filename</li>
+		<li>.gz인 압축파일 생성</li>
+		<li>unzip으로 압축해제</li>
+	</ul>
+	<h3>option</h3>
+	<ul>
+		<li>-v : 압축 정보 화면에 출력</li>
+		<li>-r : 디렉토리 압축</li>
+		<li>-u : 수정되거나 추가된 파일만 출력</li>
+	</ul>
+
+	<h1>bzip2</h1>
+	<ul>
+		<li>오픈 소스 압축명령</li>
+		<li>gzip, zip에 비해 압축률은 높고 속도는 약간 느리다.</li>
+		<li>.bz2 파일 생성</li>
+	</ul>
+	<h3>옵션</h3>
+	<ul>
+		<li>-d : 파일 압축을 해제</li>
+		<li>-l : 압축된 파일의 내용을 보여줌.</li>
+		<li>-t : 압축 파일 검사</li>
+		<li>-v : 압축 정보를 화면에 출력</li>
+		<li>--best : 최대한 압축</li>
+	</ul>
+
+	<h1>다른 명령들</h1>
+	<ul>
+		<li>jar : Java Archive Tool 여러 파일을 하나의 jar파일로 묶어서 압축, 옵션없이 사용하면 사용법 출력한다!</li>
+		<li>compress (compress [옵션] 파일명) : 파일을 압축한다. 확장자가 .z인 파일을 생성한다.</li>
+		<li>uncompress : 압축 해제</li>
+		<li>zcat : zcat [파일명], .z파일 내용을 화면에 출력.</li>
+		<li>gzcat : 확장자가 .gz인 파일 내용 화면에 출력.</li>
+		<li>zip : 확장자가 .gz인 압축파일 생성</li>
+		<li>unzip : 확장자가 .gz인 압축 파일 생성</li>
+	</ul>
+</body>
+</html>

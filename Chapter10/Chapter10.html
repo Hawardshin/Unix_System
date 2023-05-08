@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>파일 아카이브</title>
+</head>
+<body>
+
+<h1>Chapter 10. 인터넷과 통신 명령 익히기</h1>
+
+<h2>사용자간 직접 통신</h2>
+
+<h3>write</h3>
+
+<ul>
+  <li>write 사용자명 [단말기명]</li>
+  <li>로그인한 사용자에게 메세지를 보낸다.</li>
+  <li>전송 : Ctrl + D</li>
+  <li>단말기명 : 같은 사용자 ID로 로그인을 여러번 한 경우, 단말기 명을 지정할 수 있다.</li>
+</ul>
+
+<h3>wall</h3>
+
+<ul>
+  <li><strong>wall [ 파일명 ]</strong></li>
+  <li>시스템에 로그인하고 있는 모든 사용자에게 메시지를 보낸다</li>
+  <li>파일명 : 메시지 내용을 미리 파일로 작성한 경우 지정한다.</li>
+  <li>일반 사용자는 tty 그룹에 속해 있어야 명령 사용 가능하다.</li>
+  <li>PATH = $PATH:/usr/sbin를 해줘야  사용가능</li>
+</ul>
+
+<h3>talk</h3>
+
+<ul>
+  <li>talk 사용자 주소 [단말기명]</li>
+  <li>다른 사용자와 1:1 대화</li>
+  <li>같은 시스템 뿐 아니라, 다른 시스템의 사용자와도 대화 가능</li>
+  <li>ctrl + c하면 빠져나올 수 있다.</li>
+  <li>사용자 주소</li>
+  <ul>
+    <li>같은 시스템인 경우 : 사용자명</li>
+    <li>다른 시스템인 경우 : 사용자명@호스트명</li>
+  </ul>
+  <li>talk가 안되는 경우 : talk서비스 활성화 필요!!</li>
+</ul>
+
+<h3>mesg</h3>
+
+<ul>
+  <li>mesg [n|y]</li>
+  <li>write, wall, talk 메시지를 단말기에 출력하는 것을 허용/금지</li>
+  <li>옵션 :</li>
+  <ul>
+    <li>y : 메시지 수신을 허용</li>
+    <li>n : 메시지 수신을 거부</li>
+  </ul>
+</ul>
+<h1>mailx</h1>
+<ul>
+  <li>메일 서버 : 메일 서비스를 제공하는 프로그램 또는 그 프로그램이 실행중인 시스템 (POP3, SMTP)</li>
+  <li>메일 클라이언트 : 메일 서비스를 요청하는 프로그램 (mailx, mail, 아웃룩 익스프레스)</li>
+  <li>메일 도착 : /var/mail/user1</li>
+  <li>mailx [option] 이메일 주소</li>
+  <li>?가 기본 프롬포트이다.</li>
+  <li>읽은 메일은 홈 디렉토리 mbox파일에 저장된다.</li>
+  <li>메일 수신을 위한 기본 우편함 : /var/mail/사용자명</li>
+  <li>옵션 : -s : 제목 지정</li>
+</ul>
+
+<h1>finger</h1>
+<ul>
+  <li><code>finger [사용자명 | 사용자명@호스트명] | @호스트명]</code></li>
+  <li>로그인한 사용자 정보 출력,</li>
+  <li>who의 결과에 덧붙여 사용자의 완전한 이름 (/etc/passwd), 호스트명 등 추가 정보를 출력</li>
+  <li>사용자의 상세 개인정보 출력하기</li>
+  <li>다른 호스트에 로그인한 사용자 정보 출력한다.</li>
+  <li>옵션
+    <ul>
+      <li>사용자명 : 지정한 사용자 정보 출력</li>
+      <li>사용자명@호스트 : 지정한 호스트의 특정 사용자 정보출력.</li>
+      <li>@호스트 : 지정한 호스트의 사용자 목록 출력</li>
+    </ul>
+  </li>
+</ul>
+
+<h1>그외 명령들</h1>
+<ul>
+  <li>hostname: 현재 시스템의 호스트 명 출력</li>
+  <li>nslookup[도메인 명] : DNS서버와 대화식으로 도메인 명이나 IP주소를 질의하고 응답을 받는다.(종료 : exit)</li>
+  <li>ping: <code>ping hostname 또는 IP주소</code> 시스템이 네트워크를 통해 연결되는지 확인 (최근엔 보안때문에 제한되긴함)</li>
+</ul>
+
+
+<h1>ftp</h1>
+
+<ul>
+  <li><code>ftp 호스트명</code></li>
+  <li>file transfer protocol</li>
+  <li>인터넷을 통해 다른 서버에 파일을 업로드/다운로드 할 때 사용하는 명령</li>
+  <li>ftp 서비스를 활성화 해야 사용 가능</li>
+</ul>
+
+<h3>Anonymous ftp</h3>
+
+<ul>
+  <li>해당 서버에 계정이 없어도 파일을 송수신 할 수 있도록 한 ftp 서버</li>
+  <li>호스트가 제공해야 사용가능</li>
+</ul>
+
+<h3>전송모드</h3>
+
+<ul>
+  <li>ASCII 모드 : 일반텍스트 파일</li>
+  <li>이진 모드 : 이미지, 동영상, 압축파일 등</li>
+</ul>
+
+<h3>내부명령</h3>
+
+<ul>
+  <li>cd : 서버 디렉토리 이동</li>
+  <li>lcd : 클라이언트 디렉토리 이동</li>
+  <li>ls : 서버 디렉토리 내용</li>
+  <li>prompt : 다중 전송시 y/n 묻지 않기</li>
+  <li>ascii : ascii파일 전송 모드</li>
+  <li>bin : 바이너리 전송모드</li>
+  <li>get / mget :  파일(여러파일) 다운로드</li>
+  <li>put/ mput : 파일(여러파일) 업로드</li>
+  <li>dir : 서버 디렉토리 내용</li>
+  <li>pwd : 서버 디렉토리 위치 확인</li>
+  <li>!pwd : 지역 디렉토리 확인</li>
+</ul>
+
+
+</body>
+</html>

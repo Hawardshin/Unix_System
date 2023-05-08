@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Chapter 11. Using the Unix Utility</title>
+</head>
+<body>
+<h1>Collection of file information</h1>
+<h2>wc</h2>
+
+<ul>
+<li><code>wc [option] filename</code></li>
+<li>Output of lines, words, and characters in the file</li>
+</ul>
+
+<h3>Option</h3>
+
+<ul>
+<li><code>-c</code>: Byte count</li>
+<li><code>-m</code>: Number of characters</li>
+<li><code>-C</code>: <code>-m</code>과 동일</li>
+<li><code>-l</code>: Number of lines</li>
+<li><code>-w</code>: The number of words separated by white space or new lines</li>
+</ul>
+
+<h2>sort</h2>
+
+<ul>
+<li><code>sort [option] filename</code></li>
+<li>Sort the contents of the text file in the way you specify and output it to the screen</li>
+<li>Sort by: Environment variable: LC_COLLATE (or LANG)</li>
+</ul>
+
+<h3>Option</h3>
+
+<ul>
+<li><code>-b</code>: Ignore the preceding space</li>
+<li><code>-c</code>: Output out of alignment</li>
+<li><code>-r</code>: Sort in reverse order</li>
+<li><code>-u</code>: Delete duplicate row</li>
+<li><code>-d</code>: sort dictionary</li>
+<li><code>-t characters</code>: Use the specified characters as field delimiters</li>
+<li><code>+number</code>: Sort by number + 1 field</li>
+<li><code>-f</code>: Case insensitive</li>
+<li><code>+pos1-pos2</code>: Specify the field to be sorted (sort from pos1 to pos2) (<code>sort +1-2 test_sort2</code>)</li>
+</ul>
+
+<h1>Other commands</h1>
+<ul>
+<li>split: Split a large file into several smaller files of a certain size, save standard entries in segments if no file is specified</li>
+<li>uniq: If there are duplicates in a row, only one is left</li>
+<li>cut: Cut selected fields from each row of the file</li>
+<li>paste: pastes the contents of the specified file</li>
+<li>dd: Convert the specified input file according to the specified options and save it as an output file</li>
+<li>diff: command to compare differences</li>
+</ul>
+</body>
+</html>
