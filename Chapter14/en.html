@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Chapter 14. System Management Basics</title>
+</head>
+<body>
+<h1>Chapter 14. System Management Basics</h1>
+<h2>System Manager</h2>
+<ul>
+<li>Users responsible for managing and operating systems to ensure that they work properly</li>
+<li>All rights reserved</li>
+<li>Account name: root</li>
+</ul>
+
+<h2>The role of system administrator</h2>
+<ul>
+<li>Register/Delete User</li>
+<li>Install, upgrade, and uninstall various software</li>
+<li>Additional installation of various hardware (disk, printer, modem, terminal, etc.)</li>
+<li>System Security</li>
+<li>Back up data</li>
+<li>Monitoring computer resources</li>
+<li>Diagnosis and troubleshooting in case of hardware/software problems</li>
+</ul>
+
+<h2>System Administrator account: root</h2>
+
+<h3>Log in with root account</h3>
+<ul>
+<li>Login name: root, password: specified during system installation</li>
+<li>Prompt: #</li>
+<li>Home directory: /root</li>
+</ul>
+
+<h3>Change to root account</h3>
+<ul>
+<li>Log in with a regular account and change the user to root</li>
+<li>Safe than logging in directly with the root account</li>
+<li>Use if you block direct access to your root account for security purposes</li>
+<li>Only the specified user can use su as the root account on Solaris 11</li>
+<li>Change to root account: <code>su [-] [Account name]</code></li>
+<li>Run the initialization file and go to the home directory</li>
+<li>The user name you want to change. If omitted, root</li>
+<li>Modify the file in the root account to define various aliases, functions, etc.</li>
+</ul>
+<h1>Starting System</h1>
+
+<ol>
+<li>Power On</li>
+<li>Testing system hardware behavior</li>
+<li>Found boot device location → BootPROM phase</li>
+<li>Load system kernel → Boot program phase</li>
+<li>Kernel initialization phase → kernel initialization phase</li>
+<li>/etc/init 실행 → init phase</li>
+<li>Login window</li>
+</ol>
+
+<h2>Shutting down: shutdown</h2>
+
+<pre><code>shutdown [option] [message]</code></pre>
+
+<ul>
+<li>Automatic shutdown of the system after the specified time has elapsed</li>
+<li>All users connected to the system can receive warning sounds and messages.</li>
+<li>y: Do not reconfirm whether the system is shut down</li>
+<li>-g Time: Shut down the system after the specified time has elapsed</li>
+<li>-i status: change to specified state</li>
+<li>now: End immediately</li>
+<li>Messages: Specify messages to send to all users accessing the system</li>
+</ul>
+
+<h3>Considerations at End</h3>
+
+<ul>
+<li>Notify current users of system shutdown</li>
+<li>Provides working users time to organize their work and save data</li>
+<li>Save data in memory to disk (sync command)</li>
+</ul>
+
+<h1>Components of a user account</h1>
+
+<ul>
+<li>Login ID: Name that distinguishes users within the system. Must be unique within the system
+<li>Password</li>
+<li>Home directory: Directory located immediately after login</li>
+<li>Login Shell: Shell that runs automatically when you log in, user's command processing</li>
+<li>User initialization files: files in which each user configures their work environment, login shell runs automatically</li>
+<li>root 0(uid) : Superuser 계정. Have full privileges as a system administrator
+<li>daemon 1(uid) Background processing 제어</li>
+<li>bin 2(uid) Most command-owned accounts</li>
+<li>sys 3(uid) System File Ownership Account</li>
+<li>File ownership account for administering adm 4(uid)</li>
+<li>The print service account that owns the file for the lp71(uid) printer</li>
+<li>smtp 0(uid)Mail service provided</li>
+</ul>
+
+<h2>/etc/passwd Files</h2>
+
+<h3>1. Login ID</h3>
+
+<p>User name.<br>
+a combination of letters and numbers. Different systems have different acceptance criteria</p>
+
+<h3>2.UID</h3>
+
+<p>Serial number given to users internally in the system<br>
+Use between 100 and 65534<br>
+0-99, 60001, 60002,655534 : System Use</p>
+
+<h3>3. Password</h3>
+
+<p>As security has become more important in recent years, this field is marked with x and passwords are stored in /etc/shadow files that can only be read as root.<br>
+Save encrypted passwords directly in this field on Linux or earlier versions of UNIX</p>
+
+<h3>4. GID</h3>
+
+<p>Default group ID to which the user belongs<br>
+Define in /etc/group</p>
+
+<h3>5. User Description</h3>
+
+<p>Full name of the user, account usage purpose stated</p>
+
+<h3>6. Home directory</h3>
+
+<h3>7.Login Shell</h3>
+
+<h1>Managing Users</h1>
+
+<ul>
+<li>Add User: useradd</li>
+<li>Modifying user information: usermod</li>
+<li>Delete user: userdel</li>
+<li>User Message Delivery: Emergency (wall), Notice (/etc/motd)</li>
+</ul>
+
+<h3>Delivery of notice: /etc/motd</h3>
+
+<ul>
+<li>Output messages stored in /etc/motd file each time a user logs in</li>
+Edit the contents of the <li>/etc/motd file to vi and use it</li>
+</ul>
+<h1>Group Management</h1>
+
+<ul>
+<li>Group name: The name of the group. It can be the same as the login name.</li>
+<li>Password: Even if you are not a member of the group, you can access files and directories in the group if you know the password. For security reasons, you have not used it recently.</li>
+<li>GID: Group ID, the serial number system with the system attached to each group uses 0 to 99,60001,60002,65534, and the general user uses 100 to 60000.</li>
+<li>User list: The login name of the user in the group. Indicates the auxiliary group of the user.(The user's default group information appears in the /etc/passwd file.)</li>
+</ul>
+
+<h3>Create group add</h3>
+
+<ul>
+<li>groupadd group name</li>
+<li>Option -g GID: Specify the GID value of the created group</li>
+<li>Option -o GID: Allow duplicate GIDs</li>
+<li>The value of the GID varies depending on the system.</li>
+</ul>
+
+<h3>Modifying group: groupmod</h3>
+
+<ul>
+<li>groupmod [option] group name</li>
+<li>Option -g GID: Modify the GID value of the specified group</li>
+<li>Option -o GID: Allow GID redundancy</li>
+<li>Option -n New Name: Rename Group</li>
+</ul>
+
+<h3>Delete group: groupdel</h3>
+
+<ul>
+<li>Deletes the specified group.</li>
+</ul>
+<h1>Manage root password</h1>
+
+<h3>Managing system administrator accounts</h3>
+
+<ul>
+<li>The system administrator account (root) has access to all files and resources on the system</li>
+<li>If the root password is exposed, all information in the system may be leaked</li>
+</ul>
+
+<h3>Recovering Password</h3>
+
+<ol>
+You can enter the <li>F2 key to adjust the Boot to the CD-ROM up in the BIOS menu.</li>
+<li>Save as F10 and exit.</li>
+<li>Then you will see the Solaris installation screen, where you select the Shell menu.</li>
+<li>디스크 연결: import -f rpool → beadm list → mkdir /a → beadm mount solaris /a</li>
+<li>/etc/shadow modification: TERM=vt100 → export TERM→ cd/a/etc→ vi shadow → then root:xxxxxxx:17915::::::::: screen comes out, erase xxxxxx between → : and : and save as wq.</li>
+<li>It now unmounts the mounted file system. → System down with the halt command: cd / → beadmumount solaris → halt</li>
+<li>Touch BIOS again to change boot order → hard disk priority.</li>
+<li>Log in as a regular user when you reboot.</li>
+<li>Then the password for the root is gone, and the password for the root account is reset using the sudo passwd root command.</li>
+</ol>
+
+<h1>Service Management</h1>
+
+<ul>
+<li>Unix is an operating system for servers</li>
+<li>Multiple server programs that offer a variety of services run
+<ul>
+<li>Example: Web Services - httpd Program</li>
+</ul>
+</li>
+<li>Solaris 10 and later changes:
+<ul>
+<li>The software that provides the server function has been changed from the server program to the service.</li>
+<li>The execution of the software was changed from the rc script file (located in the /etc/rc0.d, rc1.d, rc3.d, rcS.d directory) to the service management device. (SMF: Service Management Facility)</li>
+</ul>
+</li>
+</ul>
+
+<h3>Providing information about the service svcs (Solaris command)</h3>
+
+<ul>
+<li>Output information about the service</li>
+<li>Available to all users</li>
+</ul>
+
+<h3>Option</h3>
+
+<ul>
+<li>-a: Output a list of all services regardless of whether they are operational</li>
+<li>-p [service name]: Output a list of processes related to the service</li>
+<li>-l Service Name: Output detailed information related to the specified service</li>
+<li>-x [Service Name]: Output service status information</li>
+</ul>
+
+<h3>Activate/Disable Service svcadm</h3>
+
+<ul>
+<li>Enable or restart the service.</li>
+<li>svcadm subcommand service</li>
+<li>Subname
+<ul>
+<li>enable: Activate the specified service</li>
+<li>disable: disable the specified service</li>
+<li>restart: Restart the specified service</li>
+</ul>
+</li>
+</ul>
+
+<h1>Package management</h1>
+
+<h2>Package management: pkg</h2>
+
+<ul>
+<li>pkg subcommand [package name]</li>
+</ul>
+
+<ol>
+<li>Find and install packages on the Internet</li>
+<li>Subcommand
+<ul>
+<li>install [package name]: Find and install the specified package</li>
+<li>list [package name]: Locate the installed package and print it out</li>
+<li>search pattern: Find all information containing the pattern in the package information and print it out</li>
+</ul>
+</li>
+</ol>
+
+<h1>Network Management</h1>
+
+<ul>
+<li>Managing with Network Configuration Profile (NCP)</li>
+<li>Checking information related to IP addresses ifconfig</li>
+<li>Check all information related to the IP address ifconfig -a</li>
+<li>Checking IP address: ipdam</li>
+</ul>
+</body>
+</html>
+
