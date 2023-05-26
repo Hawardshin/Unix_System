@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Shell Script</title>
+</head>
+<body>
+<h1>Shell script</h1>
+
+<h3>What is a script?</h3>
+
+<ul>
+<li>A program run by another program called an interpreter</li>
+<li>Java Script, Perl, Python,...</li>
+</ul>
+
+<h3>What is shell script</h3>
+
+<ul>
+<li>Programs run by Shell</li>
+<li>Unix Commands + Program Components Provided by Shell</li>
+<li>It is recommended not to use names such as keywords, aliases, or built-in commands for shell script file names.</li>
+<li>Order of executing shell commands: Aliases → Keywords (if, while, until, etc.) → Functions → Embedded commands (cd, echo, etc.) → Executable files in PATH paths such as scripts, utilities, etc.</li>
+</ul>
+
+<h3>Example of creating shell scripts</h3>
+
+<ul>
+<li><code>#!/usr/bin/bash</code>: Meaning to run as a Bash <code>#! (file first location with a magic number)</code></li>
+<li>You can give me other executable commands than shell here. (<code>#!/usr/bin/more</code>)</li>
+<li><code>#</code>: Meaning annotation</li>
+Run with <li>sh or run by chmod +x.</li>
+<li>End shell script: <code>exit(n);</code> (End state saved in <code>$?</code> variable)</li>
+</ul>
+
+<h2>Using Shell Variables</h2>
+
+<p>Variables: Where programs store the various information they process</p>
+
+<p>Type: shell variable (available in current shell only), environment variable (available in all shells)</p>
+
+<p>To specify: variable name = value</p>
+
+<p>How to View: <code>${name}</code></p>
+
+<h3>Handling shell variable strings</h3>
+
+<ul>
+<li><code>${PATH%/bin}</code>: Remove the minimum part that matches the pattern from the back. (Find from the back and delete the ones you found first)</li>
+<li><code>${PATH%/bin*</code>: When using %%, you should write * as an indication that any value can come out if the specified pattern is in the middle.</li>
+<li><code>${PATH2#/export}</code>: Remove the minimum part that matches the pattern from the beginning (## is the maximum part).)</li>
+<li>## is also <code>${PATH2##*/}</code>: It gives a * in that there is a pattern that can come out.</li>
+<li><code>${#PATH}</code>This will output the number of saved characters!!</li>
+</ul>
+
+<h2>Handling command line factors</h2>
+
+<h3>Command line factor</h3>
+
+<ul>
+<li>The value given as a factor when executing the script</li>
+</ul>
+
+<h3>Location Parameters</h3>
+
+<ul>
+<li>Script variables that store command line factors</li>
+<li>Name is determined by the location of the factor</li>
+<li><code>$0</code>: Name of the current script</li>
+<li><code>$1 -$9</code>: Position factors from 1 to 9 given in command line</li>
+<li><code>${10}</code>: 10th position factor.</li>
+<li><code>$#</code>: Total number of position factors</li>
+<li><code>$*</code>: All position factors</li>
+<li><code>$@</code>: It is the same as <code>$*</code>.</li>
+<li><code>"$*"</code>:<code>$1,$2,$3</code> is grouped together and treated as a string.</li>
+<li><code>"$@"</code>:<code>$1,$2,$3</code> which are treated as independent strings.</li>
+<li><code>$?</code>: The end value of the recently executed command</li>
+<li><code>set --</code>: Delete all position factors or cancel the setting.</li>
+</ul>
+
+<h3>Using Shell Variables</h3>
+
+<ul>
+<li>Small quotes: prevent all special characters from being interpreted.</li>
+<li>Quotes: Only replacements for variables or commands are allowed.</li>
+<li>Inverse slash (\): prevents a single character from being interpreted</li>
+</ul>
+
+<h3>Command replacement: Return command execution result to string</h3>
+
+<ul>
+<li>Backquarter <code>echo 'date'</code>: Returns the internal command execution result as a string.</li>
+<li><code>echo $(command)</code>: Command replaced</li>
+</ul>
+
+<h3>Getting input from user</h3>
+
+<ul>
+<li><code>read</code>: Input directly from user</li>
+<li>The terminal processes the input from the file with the shell built-in command.</li>
+<li><code>read x</code>: Receive one line from the standard input and store it in x.</li>
+<li><code>read first last</code>: Take one line from the standard input, save the first word to first, and save the rest to last.</li>
+<li><code>read-p prompt</code>: Output the prompt and wait for the input. The input value is stored in the REPLY variable. (No prompt value)</li>
+<li> Receiving storage here means storing all of them in the shell variable.</li>
+</ul>
+
+<h3>Enter via here document: &lt;&lt;</h3>
+
+<ul>
+<li>Automatic processing without accepting standard inputs directly from the user</li>
+<li><code>TERMINATOR</code> handles the described part as keyboard input</li>
+<li>Use by specifying a string indicating the end of the input because the EOF(^D) character used as the end character of the keyboard input cannot be used in the file.</li>
+<li>Use by specifying a string indicating the end of the input because the EOF(^D) character used as the end character of the keyboard input cannot be used in the file.</li>
+</ul>
+
+<h2>Operator</h2>
+
+<ul>
+<li>How to process data in a program</li>
+<li>Provide arithmetic operators, comparison operators, logical operators, and bit operators</li>
+<li>Should use let or (( ) when using numeric operators</li>
+<li><code>let a=20</code>: Space not available (<code>let "a=20"</code> to use)</li>
+<li>Blank spaces available in parentheses <code>(a = 30))</code></li>
+</ul>
+
+<h2>Control Statement</h2>
+
+<ul>
+<li>Controlling the order of sentence execution within the program</li>
+</ul>
+
+<h3>Selective Execution Statement</h3>
+
+<ul>
+<li>Selectively execute program execution statements based on conditions</li>
+<li>If, select</li>
+</ul>
+
+<h3>Selective Execution Statement Case</h3>
+
+<ul>
+<li>Specify commands to be executed separately based on the value of the given variable</li>
+<li>Separate variables and each conditional expression with ;; (usually used in case statements)</li>
+<li>If you want to create a default, use *).</li>
+<li>It is recommended to use <code>[condition]</code> as a conditional expression, match it to <code>==</code>, and use quotation marks for comparison values.</li>
+<li>Because unlike other commands, there should be no "" when compared numerically.</li>
+</ul>
+
+<h3>Repeat execution statement</h3>
+
+<ul>
+<li>Run the same command multiple times</li>
+<li>for, while, until</li>
+</ul>
+
+<h3>Repeat Execution Statement for </h3>
+
+<ul>
+<li>Get values from a specific range or list one by one and run a command</li>
+<li>Variables in for statements receive new values each time, so they are treated as local variables in the loop.</li>
+<li>Three methods are available for variable settings
+<ul>
+<li><code>fori in 1 2 3 45</code>: List values explicitly</li>
+<li><code>fori in {1..5}</code>: Show range</li>
+<li><code>fori in $(seq 15)</code>: Use seq command results</li>
+</ul>
+</li>
+<li><code>fori in *</code>: All files in the current directory</li>
+<li><code>fori in /usr/*</code>: All files in the /usr directory</li>
+</ul>
+
+<h3>Repeat execution statement while</h3>
+
+<ul>
+<li>Run the command repeatedly until the condition is true</li>
+<li>while [condition]; do command; done</li>
+</ul>
+
+<h3>Repeat execution statement until</h3>
+
+<ul>
+<li>Run the command repeatedly until the condition is false</li>
+<li>until [conditions]; do command; done</li>
+</ul>
+<h2>Function</h2>
+
+<ul>
+<li>Bundle of code written in one program unit</li>
+<li>Use for reusing and structuring code</li>
+<li>Function definition and invocation</li>
+<li>Function define: <code>function name { commands }</code> or <code>name() { commands }</code></li>
+<li>Function call: <code>name arguments</code></li>
+<li>Return value: Return result value after function is executed</li>
+<li>To use the return value, you must save it as a command substitute or variable.</li>
+</ul>
+<h1>debugging</h1>
+<h3>How to correct errors during script execution</h3>
+<ul>
+<li>SyntaxError: Shell outputs a line number that encountered a syntax error while running</li>
+<li>execution error: not running without error message or abnormal termination</li>
+</ul>
+<h3>How to correct errors</h3>
+<ul>
+<li><code>bash -x</code>: The simplest way to correct script execution errors, which is displayed on the screen each line of the script runs.</li>
+<li><code>trap</code>: If you specify a signal using the <code>trap</code> command, the specified command is executed each time the signal is passed to the script. Each line of commands in the script sends a <code>DEBUG</code> signal to the script, which can be used to output the desired variable value to determine the variable value while the script is running.</li>
+</ul>
+</body>
+</html>
